@@ -24,3 +24,24 @@ def add(request):
         
     context = {'form': form}
     return render(request, 'diary_app/add.html', context)
+
+
+def delete(request, id):
+        entry = Entry.objects.get(id=id)
+        entry.delete()
+        return redirect('home')
+
+def edit(request,id):
+        entry = Entry.objects.get(id=id)
+        if request.method=="POST":
+                form = EntryForm(request.POST, instance = entry)
+                if form.is_valid():
+                        form.save()
+                        return redirect('home')
+        else:
+                form = EntryForm()
+                return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
+
+
+def about(request):
+    return render(request, "diary_app/about.html")

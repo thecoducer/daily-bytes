@@ -20,5 +20,8 @@ from diary_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name = 'home'),
-    path('add/', views.add, name = 'add')
+    path('add/', views.add, name = 'add'),
+    path('delete/<int:id>', views.delete),
+    path('edit/<int:id>', views.edit),
+    path('about/', views.about)
 ]
