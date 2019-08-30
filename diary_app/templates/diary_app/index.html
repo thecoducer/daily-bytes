@@ -33,7 +33,11 @@
             <div class="columns notification">
                 <div class="column is-two-thirds">
                     <p class="subtitle is-5">
-                        <strong>{{ count_entries }}</strong> entries
+                        {% if count_entries < 1 %}
+                            You don't have any entries
+                        {% else %}
+                            <strong>{{ count_entries }}</strong> entries
+                        {% endif %}
                     </p>
                 </div>
                 <!-- <div class="column">a</div>

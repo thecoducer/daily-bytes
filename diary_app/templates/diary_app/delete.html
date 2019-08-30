@@ -25,15 +25,15 @@
             </div>
         </section>
 
+
         <section class="section">
-            <div class="field is-grouped">
-                <p class="control">
-                    <a class="button is-danger is-outlined" href="/delete/{{entry.id}}">Yes, delete</a>
-                </p>
-                <p class="control">
-                    <a class="button is-success is-outlined" href="{% url 'home' %}">No</a>
-                </p>      
-            </div>
+                       
+            <div class="container is-widescreen has-text-centered">
+                
+                <a class="button is-danger is-outlined" href="/delete/{{entry.id}}">Yes, delete</a>
+                &nbsp;
+                <a class="button is-success is-outlined" href="{% url 'home' %}">No</a>
+                </div>
         </section>
 
     {% endblock %}
