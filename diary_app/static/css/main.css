@@ -76,3 +76,7 @@ body{
 .readmore-div:hover { 
     background-color: #cfecff; 
 }
+
+.readmore-close{
+    background-color: transparent;
+}

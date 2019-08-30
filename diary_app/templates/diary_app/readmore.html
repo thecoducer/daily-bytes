@@ -16,7 +16,7 @@
 
     <form method="GET" action="/entry/{{entry.id}}"></form>
 
-    <section class="hero is-info is-fullheight-with-navbar">
+    <section class="hero is-info">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
@@ -27,8 +27,13 @@
         </section>
 
         <section class="section">
-                <div class="container">
-                    <p class="read-more">{{ entry.text }}</p>
+            <div class="container">
+                <p class="read-more">{{ entry.text }}</p>
+            </div>
+            
+            <div class="container is-widescreen has-text-centered">
+                <hr>
+                <a class="button is-link is-outlined" href="{% url 'home' %}"><img src="{% static '/images/close.svg' %}" alt="close" width=15px height=15px style="margin-right: 10px;">Close</a>
                 </div>
         </section>
     
