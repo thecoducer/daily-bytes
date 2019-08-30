@@ -59,3 +59,7 @@ body{
     flex-direction: column;
     height: 100vh; 
 }
+
+.about-text{
+    font-size: 35px;
+}
