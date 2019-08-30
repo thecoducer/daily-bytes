@@ -23,5 +23,6 @@ urlpatterns = [
     path('add/', views.add, name = 'add'),
     path('delete/<int:id>', views.delete),
     path('edit/<int:id>', views.edit),
-    path('about/', views.about)
+    path('about/', views.about),
+    path('readmore/', views.readmore)
 ]

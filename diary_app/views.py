@@ -45,3 +45,7 @@ def edit(request,id):
 
 def about(request):
     return render(request, "diary_app/about.html")
+
+
+def readmore(request):
+    return render(request, "diary_app/readmore.html")

@@ -1,5 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Libre+Franklin|Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 input.is-medium{
     margin-bottom: 20px;
     width: 50%;
 }
 
+.logo{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.5em;
+}
+
+.navbar-item{
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.title, .subtitle{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
+p{
+    font-family: 'Muli', sans-serif;
+}
+
+.entry-title{
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.3px;
+}
