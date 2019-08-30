@@ -61,23 +61,25 @@
             </div>
         </article>
             
-            {% for entry in entries %}
+        {% for entry in entries %}
 
         <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <p>
-                        <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
-                        <br> {{ entry.text }}
-                    </p>
+                <div class="media-content">
+                    <a href="/readmore/{{entry.id}}">
+                    <div class="content notification readmore-div">
+                        <p>
+                            <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
+                            <br>  {{ entry.text }}
+                        </p>
+                    </div>
+                    </a>
                 </div>
-            </div>
-            <div class="media-right">
-                    <a class="button" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px style="margin-right: 10px;">Edit</a>
-
-                    <a class="button is-danger is-outlined" href="/delete/{{entry.id}}"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px style="margin-right: 10px; color: red;">Delete</a>
-            </div>
-        </article>
+                <div class="media-right">
+                        <a class="button" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
+    
+                        <a class="button is-danger is-outlined" href="/delete/{{entry.id}}"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px color: red;"></a>
+                </div>
+            </article>
 
         {% endfor %}
 

@@ -13,17 +13,22 @@
     {% block content %}
     {% load static %}
 
+    <form method="GET" action="/readmore/{{entry.id}}"></form>
+
     <section class="hero is-info is-fullheight-with-navbar">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        Relax and
+                        {{ entry.title }}
                     </h1>
-            <h2 class="subtitle">
-                write your heart out.
-            </h2>
                 </div>
             </div>
+        </section>
+
+        <section class="section">
+                <div class="container">
+                    <p class="read-more">{{ entry.text }}</p>
+                </div>
         </section>
     
     {% endblock %}

@@ -48,5 +48,6 @@ def about(request):
     return render(request, "diary_app/about.html")
 
 
-def readmore(request):
-    return render(request, "diary_app/readmore.html")
+def readmore(request, id):
+    entry = Entry.objects.get(id=id)
+    return render(request, "diary_app/readmore.html", {'entry': entry})

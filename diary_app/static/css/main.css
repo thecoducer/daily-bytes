@@ -60,6 +60,19 @@ body{
     height: 100vh; 
 }
 
-.about-text{
+.about-text {
     font-size: 35px;
+}
+
+.read-more {
+    font-size: 20px;
+}
+
+.readmore-div{
+    background-color: transparent;
+    color: #363636;
+}
+
+.readmore-div:hover { 
+    background-color: #ffd5f2; 
 }
