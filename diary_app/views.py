@@ -7,7 +7,8 @@ from diary_app.forms import EntryForm
 def index(request):
     # retrive the data from the database, pass it to the template and loop over that
     entries = Entry.objects.order_by('-date_posted') # to set a definite order
-    context = {'entries': entries}
+    count_entries = Entry.objects.all().count()
+    context = {'entries': entries, 'count_entries': count_entries}
     return render(request, 'diary_app/index.html', context)
 
 
