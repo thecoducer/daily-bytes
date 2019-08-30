@@ -6,22 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily Bytes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
 </head>
 
 <body>
-    <section class="hero is-info">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Daily Bytes
-                </h1>
-		<h2 class="subtitle">
-		    Write your heart out.
-		</h2>
-            </div>
-        </div>
-    </section>
+    {% extends "./base.html" %}
+    {% block content %}
+    {% load static %}
 
     <section class="section">
         <div class="container">
@@ -29,7 +19,7 @@
             <article class="media">
                 <div class="media-content">
                     <div class="content">
-                        <a href="{% url 'add' %}">Add new byte</a>
+                        <a class="button" href="{% url 'add' %}"><img src="{% static '/images/pen.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">New</a>
                     </div>
                 </div>
             </article>
@@ -52,8 +42,7 @@
         </div>
 
     </section>
-    <footer class="footer">
-    </footer>
+    {% endblock %}
 </body>
 
 </html>

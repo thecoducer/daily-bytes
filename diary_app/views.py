@@ -23,4 +23,4 @@ def add(request):
         form = EntryForm()
         
     context = {'form': form}
-    return render(request, 'diary_app/add.html', context) 
+    return render(request, 'diary_app/add.html', context)
