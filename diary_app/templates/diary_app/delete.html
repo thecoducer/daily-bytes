@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% extends "./base.html" %}
-    {% block title %} {{ entry.title }} {% endblock %}
+    <title>Confirm delete</title>
 </head>
 
 <body>
-    
+    {% extends "./base.html" %}
     {% block content %}
     {% load static %}
 
@@ -21,24 +19,23 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        {{ entry.title }}
+                        Are you sure?
                     </h1>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <div class="container">
-                <p class="read-more">{{ entry.text }}</p>
+            <div class="field is-grouped">
+                <p class="control">
+                    <a class="button is-danger is-outlined" href="/delete/{{entry.id}}">Yes, delete</a>
+                </p>
+                <p class="control">
+                    <a class="button is-success is-outlined" href="{% url 'home' %}">No</a>
+                </p>      
             </div>
-            
-            <div class="container is-widescreen has-text-centered">
-                <hr>
-                <a class="button is-link is-outlined" href="{% url 'home' %}"><img src="{% static '/images/close.svg' %}" alt="close" width=15px height=15px style="margin-right: 10px;">Close</a>
-                </div>
         </section>
-    
+
     {% endblock %}
-    
 </body>
 </html>

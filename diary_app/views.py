@@ -26,6 +26,9 @@ def add(request):
     context = {'form': form}
     return render(request, 'diary_app/add.html', context)
 
+def confirmdelete(request, id):
+        entry = Entry.objects.get(id=id)
+        return render(request, "diary_app/delete.html", {'entry': entry})
 
 def delete(request, id):
         entry = Entry.objects.get(id=id)
