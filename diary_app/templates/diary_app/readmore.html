@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends "./base.html" %}
 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About</title>
+    {% block title %} {{ entry.title }} {% endblock %}
 </head>
 
 <body>
-    {% extends "./base.html" %}
+    
     {% block content %}
     {% load static %}
 
-    <form method="GET" action="/readmore/{{entry.id}}"></form>
+    <form method="GET" action="/entry/{{entry.id}}"></form>
 
     <section class="hero is-info is-fullheight-with-navbar">
             <div class="hero-body">
@@ -32,5 +33,9 @@
         </section>
     
     {% endblock %}
+
+    <script>
+        document.title = {{ entry.title }};
+    </script>
 </body>
 </html>
