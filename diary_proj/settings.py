@@ -28,6 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CKEDITOR_CONFIGS = {
+'default': {
+    #'toolbar': None, #You can change this based on your requirements.
+    'width': 'auto',
+
+          },
+    }
+
 
 # Application definition
 
@@ -38,8 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'diary_app'
+    'diary_app',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,5 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
 
 django_heroku.settings(locals())

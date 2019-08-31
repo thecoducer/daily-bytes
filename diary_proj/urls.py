@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from diary_app import views
+
+from django.conf.urls import include
+from django.conf import settings 
+from django.conf.urls.static import static 
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +31,6 @@ urlpatterns = [
     path('edit/<int:id>', views.edit),
     path('about/', views.about),
     path('entry/<int:id>', views.readmore, name = 'readmore'),
-    path('confirmdelete/<int:id>', views.confirmdelete)
-]
+    path('confirmdelete/<int:id>', views.confirmdelete),
+    path('ckeditor/', include('ckeditor_uploader.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -26,13 +26,13 @@
     <section class="section">
         <div class="container">
 
-            <form method="POST" action="{% url 'add' %}">
+            <form method="POST">
             {% csrf_token %}
             
             <div class="field">
                 <div class="control">
-                    {{ form.title }}
-                    {{ form.text }}
+                    {{ form.media }}
+                    {{ form }}
                 </div>
             </div>
           

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Editing an entry</title>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -29,13 +30,17 @@
     <section class="section">
         <div class="container">
 
-            <form method="POST" action="/edit/{{entry.id}}">
+            <form method="POST">
             {% csrf_token %}
                         
                 <div class="field">
                     <div class="control">
-                        <input type="text" name="title" maxlength="50" class="input is-medium" value="{{entry.title}}" required id="id_title">
-                        <textarea name="text" cols="40" rows="10" class="textarea" required id="id_text">{{ entry.text }}</textarea>
+                        <input type="text" name="title" maxlength="50" class="input is-medium mobile-input" value="{{entry.title}}" required id="id_title">
+
+                        <!-- <textarea name="text" cols="40" rows="10" class="textarea" required id="id_text">{{ entry.text | safe }}</textarea> -->
+                        
+                        <textarea name="text" id="id_text"> {{ entry.text }} </textarea>
+
                     </div>
                 </div>
 
@@ -50,6 +55,10 @@
             </div>
 
             </form>
+
+            <script>
+                CKEDITOR.replace( 'id_text' );
+            </script>
 
         </div>
     </section>
