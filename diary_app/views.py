@@ -41,7 +41,7 @@ def edit(request,id):
                 form = EntryForm(request.POST, instance = entry)
                 if form.is_valid():
                         form.save()
-                        return redirect('home')
+                        return redirect('readmore', id=id)
         else:
                 form = EntryForm()
                 return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
@@ -54,3 +54,4 @@ def about(request):
 def readmore(request, id):
     entry = Entry.objects.get(id=id)
     return render(request, "diary_app/readmore.html", {'entry': entry})
+
