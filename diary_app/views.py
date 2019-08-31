@@ -18,7 +18,8 @@ def add(request):
 
         if form.is_valid():
             form.save()
-            return redirect('home')
+            current = Entry.objects.latest('date_posted') # fetching latest entry
+            return redirect('readmore', id=current.id)
 
     else:
         form = EntryForm()
