@@ -34,6 +34,10 @@
             
             <div class="container is-widescreen has-text-centered">
                 <hr>
+                <a class="button is-danger is-outlined" href="/confirmdelete/{{entry.id}}"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px style="margin-right: 3px;">Delete</a>
+                
+                <a class="button" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px style="margin-right: 2px;">Edit</a>
+
                 <a class="button is-link is-outlined" href="{% url 'home' %}"><img src="{% static '/images/close.svg' %}" alt="close" width=15px height=15px style="margin-right: 10px;">Close</a>
                 </div>
         </section>
