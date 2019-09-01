@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact</title>
+</head>
+
+<body>
+    {% extends "./base.html" %}
+    {% block content %}
+    {% load static %}
+
+    <section class="hero is-info">
+        <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hello
+            </h1>
+            <h2 class="subtitle">
+                user!
+            </h2>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Report an issue or send feedback</h1>
+
+            <br>
+
+            <form method="POST" action="https://formspree.io/mayukh5741@gmail.com">
+                
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input name="email" class="input " type="email" placeholder="Enter email">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                  </div>
+                  
+                  <br>
+
+                  <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                      <textarea class="textarea" placeholder="Textarea"></textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="field is-grouped">
+                    <div class="control">
+                      <button type="submit" class="button is-link">Send</button>
+                    </div>
+                  </div>
+            </form>
+
+        </div>
+    </section>
+
+    {% endblock %}
+</body>
+</html>

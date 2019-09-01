@@ -48,11 +48,15 @@ def edit(request,id):
                 return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
 
 
+def readmore(request, id):
+    entry = Entry.objects.get(id=id)
+    return render(request, "diary_app/readmore.html", {'entry': entry})
+
+
 def about(request):
     return render(request, "diary_app/about.html")
 
 
-def readmore(request, id):
-    entry = Entry.objects.get(id=id)
-    return render(request, "diary_app/readmore.html", {'entry': entry})
+def contact(request):
+        return render(request, "diary_app/contact.html")
 
