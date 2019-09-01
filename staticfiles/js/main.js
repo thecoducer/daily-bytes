@@ -4,8 +4,3 @@ function toggleBurger() {
     burger.toggleClass('is-active');
     menu.toggleClass('is-active');
 }
-
-function toggleDelete() {
-    var delete = $('.modal');
-    delete.toggleClass('is-active');
-}
