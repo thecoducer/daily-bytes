@@ -28,37 +28,38 @@
     </section>
 
     <section class="section">
-        <div class="container">
+    <div class="container">
 
-            <form method="POST">
-            {% csrf_token %}
-                        
-                <div class="field">
-                    <div class="control">
-                        <input type="text" name="title" maxlength="50" class="input is-medium mobile-input" value="{{entry.title}}" required id="id_title">
-
-                        <!-- <textarea name="text" cols="40" rows="10" class="textarea" required id="id_text">{{ entry.text | safe }}</textarea> -->
-                        
-                        <textarea name="text" id="id_text"> {{ entry.text }} </textarea>
-
-                    </div>
-                </div>
-
-            <div class="field is-grouped is-grouped-right">
-                    <div class="control">
-                        <a class="button" href="{% url 'home' %}"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
-                    </div>
-
+        <form method="POST">
+        {% csrf_token %}
+                    
+            <div class="field">
                 <div class="control">
-                    <button class="button is-success is-outlined" type="submit"><img src="{% static '/images/save.svg' %}" alt="Save" width=15px height=15px style="margin-right: 10px;">Update</button>
+                    <input type="text" name="title" maxlength="50" class="input is-medium edit-title" value="{{entry.title}}" required id="id_title">
+
+                    <!-- <textarea name="text" cols="40" rows="10" class="textarea" required id="id_text">{{ entry.text | safe }}</textarea> -->
+                    
+                    <textarea name="text" id="id_text"> {{ entry.text }} </textarea>
+
                 </div>
             </div>
 
-            </form>
+        <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <a class="button" href="{% url 'home' %}"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
+                </div>
 
-            <script>
-                CKEDITOR.replace( 'id_text' );
-            </script>
+            <div class="control">
+                <button class="button is-success is-outlined" type="submit"><img src="{% static '/images/save.svg' %}" alt="Save" width=15px height=15px style="margin-right: 10px;">Update</button>
+            </div>
+        </div>
+        </form>
+
+        <script>
+        CKEDITOR.replace('id_text', {
+            height: 450
+        });
+        </script>
 
         </div>
     </section>

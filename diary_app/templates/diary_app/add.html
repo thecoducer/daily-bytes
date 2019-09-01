@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add new byte</title>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -13,12 +14,15 @@
     {% block content %}
     {% load static %}
 
+    <form method="POST">
+
     <section class="hero is-info">
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
                         What's on your mind?
                     </h1>
+                    <input type="text" name="title" maxlength="50" class="input is-medium title-input" value="{{entry.title}}" required id="id_title" placeholder="Enter a title">
                 </div>
             </div>
         </section>
@@ -26,15 +30,19 @@
     <section class="section">
         <div class="container">
 
-            <form method="POST">
+           
             {% csrf_token %}
             
             <div class="field">
                 <div class="control">
-                    {{ form.media }}
-                    {{ form }}
+                    <!-- <input type="text" name="title" maxlength="50" class="input is-medium mobile-input" value="{{entry.title}}" required id="id_title" placeholder="Enter a title"> -->
+                    <!-- <h2 class="subtitle">Write here</h2> -->
+                    
+                    <textarea name="text" id="id_text"></textarea>
+
                 </div>
             </div>
+
           
             <div class="field is-grouped is-grouped-right">
                     <div class="control">
@@ -47,6 +55,12 @@
             </div>
 
             </form>
+
+            <script>
+                CKEDITOR.replace('id_text', {
+                    height: 450
+                });
+                </script>
 
         </div>
     </section>
