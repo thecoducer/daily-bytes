@@ -101,11 +101,7 @@ blockquote{
 @media (min-width: 1281px) {
     
     .message{
-      display: block;
-      max-width: 100%;
-      /* min-width: 100%; */
-      padding: .625em;
-      resize: vertical;
+      width: 50%;
     }
 
     .edit-title{
