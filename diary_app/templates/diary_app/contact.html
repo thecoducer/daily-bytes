@@ -39,7 +39,7 @@
                     <div class="control has-icons-left has-icons-right">
                       <input name="email" class="input " type="email" placeholder="Enter email">
                       <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <img src="{% static '/images/envelope.svg' %}" alt="Add new byte" width=15px height=15px style="margin-left: 5px; margin-right: 5px;">
                       </span>
                   </div>
                   
@@ -48,13 +48,13 @@
                   <div class="field">
                     <label class="label">Message</label>
                     <div class="control">
-                      <textarea name="message" class="textarea" placeholder="Textarea"></textarea>
+                      <textarea name="message" class="textarea" placeholder="Your message here"></textarea>
                     </div>
                   </div>
                   
                   <div class="field is-grouped">
                     <div class="control">
-                      <button type="submit" class="button is-link">Send</button>
+                      <button type="submit" class="button is-success is-outlined">Send</button>
                     </div>
                   </div>
             </form>
