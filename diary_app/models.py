@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Entry(models.Model):
-    title = models.CharField(max_length=50, default='', verbose_name="")
+    title = models.CharField(max_length=100, default='', verbose_name="")
     # text = RichTextField()
     text = RichTextUploadingField(verbose_name="")
     # verbose_name = "" is done to hide the labels
