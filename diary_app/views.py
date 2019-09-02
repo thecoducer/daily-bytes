@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry
 from diary_app.forms import EntryForm
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 
@@ -35,6 +36,9 @@ def delete(request, id):
         entry = Entry.objects.get(id=id)
         entry.delete()
         return redirect('home')
+
+def delete_no(request):
+        return HttpResponse('<script>history.back(); history.back();</script>')
 
 def edit(request,id):
         entry = Entry.objects.get(id=id)

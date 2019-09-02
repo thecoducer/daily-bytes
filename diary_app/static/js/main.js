@@ -4,3 +4,7 @@ function toggleBurger() {
     burger.toggleClass('is-active');
     menu.toggleClass('is-active');
 }
+
+function no() {
+    history.back();
+}
