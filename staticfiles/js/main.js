@@ -5,6 +5,6 @@ function toggleBurger() {
     menu.toggleClass('is-active');
 }
 
-function no() {
+function goback() {
     history.back();
 }

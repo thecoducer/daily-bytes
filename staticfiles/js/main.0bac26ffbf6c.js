@@ -5,7 +5,6 @@ function toggleBurger() {
     menu.toggleClass('is-active');
 }
 
-function toggleDelete() {
-    var delete = $('.modal');
-    delete.toggleClass('is-active');
+function goback() {
+    history.back();
 }

@@ -25,7 +25,7 @@ class EntryListView(ListView):
         template_name = 'diary_app/index.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
-        #paginated_by = 2
+        paginate_by = 2
 
         # Override get_context_data and add any additional querysets to the context.
         def get_context_data(self, **kwargs):
