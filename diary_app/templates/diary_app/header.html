@@ -11,6 +11,8 @@
     </div>
 </section> -->
 
+{% load static %}
+
 <div id="app">
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -53,16 +55,27 @@
       </div>
   
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                  <img src="{% static '/images/user.svg' %}" alt="User" width=18px height=18px style="margin-right: 0px;">
+              </a>
+      
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item" href="#">
+                  My Profile
+                </a>
+                <a class="navbar-item" href="#">
+                  Drafts
+                </a>
+                <a class="navbar-item" href="#">
+                  Trash  
+                </a>
+                <a class="navbar-item" href="#">
+                  Logout  
+                </a>
+                
+              </div> 
+            </div>
       </div>
     </div>
   </nav>
