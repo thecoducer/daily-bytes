@@ -230,3 +230,6 @@ blockquote{
   margin-top: 20px;
 }
   
+blockquote, p, pre {
+  margin: 0px 20px 0px 20px;
+}
