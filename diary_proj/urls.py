@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from diary_app import views
+from diary_app.views import EntryListView
 
 from django.conf.urls import include
 from django.conf import settings 
@@ -25,7 +26,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name = 'home'),
+    path('', EntryListView.as_view(), name = 'home'),
     path('add/', views.add, name = 'add'),
     path('delete/<int:id>', views.delete),
     path('edit/<int:id>', views.edit),
