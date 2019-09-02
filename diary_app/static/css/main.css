@@ -60,7 +60,7 @@ p{
     font-size: 35px;
 }
 
-.read-more {
+.readmore-page {
     font-size: 20px;
 }
 
@@ -99,6 +99,11 @@ blockquote{
 */
 
 @media (min-width: 1281px) {
+
+    .readmore-page {
+      font-size: 20px;
+      margin: 0px 20px 0px 20px;
+    }
     
     .edit-title{
         margin-bottom: 20px;
@@ -123,6 +128,11 @@ blockquote{
   */
   
   @media (min-width: 1025px) and (max-width: 1280px) {
+
+    .readmore-page {
+        font-size: 20px;
+        margin: 0px 20px 0px 20px;
+    }
 
     .edit-title{
         margin-bottom: 20px;
@@ -230,6 +240,3 @@ blockquote{
   margin-top: 20px;
 }
   
-blockquote, p, pre {
-  margin: 0px 20px 0px 20px;
-}
