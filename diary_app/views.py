@@ -85,3 +85,6 @@ def contact(request):
 
 def SignIn(request):
         return render(request, "diary_app/signin.html")
+
+def SignUp(request):
+        return render(request, "diary_app/signup.html")

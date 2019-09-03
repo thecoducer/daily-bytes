@@ -34,6 +34,7 @@ urlpatterns = [
     path('entry/<int:id>', views.readmore, name = 'readmore'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('contact/', views.contact),
-    path('signin/', views.SignIn)
+    path('signin/', views.SignIn, name='signin'),
+    path('signup/', views.SignUp, name='signup')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
