@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry
-from diary_app.forms import EntryForm
+from diary_app.forms import EntryForm, UserForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -20,12 +24,17 @@ from django.views.generic import (
     context = {'entries': entries, 'count_entries': count_entries}
     return render(request, 'diary_app/home.html', context) """
 
+
 class EntryListView(ListView):
         model = Entry 
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
         paginate_by = 10
+
+        @method_decorator(login_required)
+        def dispatch(self, *args, **kwargs):
+                return super().dispatch(*args, **kwargs)
 
         # Override get_context_data and add any additional querysets to the context.
         def get_context_data(self, **kwargs):
@@ -36,12 +45,15 @@ class EntryListView(ListView):
                 return context
 
 
+@login_required
 def add(request):
     if request.method == 'POST':
         form = EntryForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            new = form.save(commit=False)
+            new.author = request.user
+            new.save()
             current = Entry.objects.latest('date_posted') # fetching latest entry
             return redirect('readmore', id=current.id)
 
@@ -52,15 +64,19 @@ def add(request):
     return render(request, 'diary_app/add.html', context)
 
 
+@login_required
 def delete(request, id):
-        entry = Entry.objects.get(id=id)
+        #entry = Entry.objects.get(id=id)
+        entry = get_object_or_404(Entry, id=id)
         entry.delete()
         return redirect('home')
 
 
+@login_required
 def edit(request,id):
-        entry = Entry.objects.get(id=id)
-        if request.method=="POST":
+        #entry = Entry.objects.get(id=id)
+        entry = get_object_or_404(Entry, id=id)
+        if request.method == "POST":
                 form = EntryForm(request.POST, instance = entry)
                 if form.is_valid():
                         form.save()
@@ -70,8 +86,10 @@ def edit(request,id):
                 return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
 
 
+@login_required
 def readmore(request, id):
-    entry = Entry.objects.get(id=id)
+    #entry = Entry.objects.get(id=id)
+    entry = get_object_or_404(Entry, id=id)
     return render(request, "diary_app/readmore.html", {'entry': entry})
 
 
@@ -79,12 +97,40 @@ def about(request):
     return render(request, "diary_app/about.html")
 
 
+@login_required
 def contact(request):
         return render(request, "diary_app/contact.html")
 
 
-def SignIn(request):
-        return render(request, "diary_app/signin.html")
-
 def SignUp(request):
-        return render(request, "diary_app/signup.html")
+        if request.method == "POST":
+                form = UserForm(request.POST)
+                if form.is_valid():
+                        form.save()
+                        return redirect("/signin/")
+        else:
+                form = UserForm()
+        return render(request, "users/signup.html", {'form': form})
+
+
+""" def SignIn(request):
+        return render(request, "diary_app/signin.html") """
+
+
+""" def SignIn_validate(request):
+        next_page = request.GET['next']
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+                login(request, user) #logs in the user
+                return HttpResponseRedirect(next_page)
+        else:
+                return redirect('signin') """
+
+
+@login_required
+def logout_User(request):
+        logout(request)
+        return redirect('signin')
+

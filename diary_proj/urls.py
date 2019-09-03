@@ -22,6 +22,8 @@ from diary_app.views import EntryListView
 from django.conf.urls import include
 from django.conf import settings 
 from django.conf.urls.static import static 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
@@ -34,7 +36,9 @@ urlpatterns = [
     path('entry/<int:id>', views.readmore, name = 'readmore'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('contact/', views.contact),
-    path('signin/', views.SignIn, name='signin'),
-    path('signup/', views.SignUp, name='signup')
+    path('signin/', LoginView.as_view(template_name='diary_app/signin.html'), name='signin'),
+    path('signup/', views.SignUp, name='signup'),
+    #path('signin-validate/', views.SignIn_validate),
+    path('logout/', views.logout_User)
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
