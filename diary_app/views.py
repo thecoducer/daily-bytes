@@ -18,11 +18,11 @@ from django.views.generic import (
     entries = Entry.objects.order_by('-date_posted') # to set a definite order
     count_entries = Entry.objects.all().count()
     context = {'entries': entries, 'count_entries': count_entries}
-    return render(request, 'diary_app/index.html', context) """
+    return render(request, 'diary_app/home.html', context) """
 
 class EntryListView(ListView):
         model = Entry 
-        template_name = 'diary_app/index.html'
+        template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
         paginate_by = 10
@@ -51,17 +51,12 @@ def add(request):
     context = {'form': form}
     return render(request, 'diary_app/add.html', context)
 
-def confirmdelete(request, id):
-        entry = Entry.objects.get(id=id)
-        return render(request, "diary_app/delete.html", {'entry': entry})
 
 def delete(request, id):
         entry = Entry.objects.get(id=id)
         entry.delete()
         return redirect('home')
 
-def delete_no(request):
-        return HttpResponse('<script>history.back(); history.back();</script>')
 
 def edit(request,id):
         entry = Entry.objects.get(id=id)
@@ -87,3 +82,6 @@ def about(request):
 def contact(request):
         return render(request, "diary_app/contact.html")
 
+
+def SignIn(request):
+        return render(request, "diary_app/signin.html")
