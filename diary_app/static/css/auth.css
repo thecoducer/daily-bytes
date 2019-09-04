@@ -1,6 +1,6 @@
 body {
     color: #434343;
-    background: #dfe7e9;
+    background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
     font-family: 'Lato', sans-serif;
 }
 h2{
@@ -139,7 +139,7 @@ border-color: #45d160;
     }
     
     body {
-        background: white;
+        background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
     }
     
   }
@@ -160,7 +160,7 @@ border-color: #45d160;
     }
     
     body {
-        background: white;
+        background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
     }
     
   }

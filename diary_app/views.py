@@ -139,3 +139,6 @@ def SignOut(request):
         logout(request)
         return redirect('signin')
 
+
+def ForgetPassword(request):
+        return render(request, "diary_app/forgetpassword.html")

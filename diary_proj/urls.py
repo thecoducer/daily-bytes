@@ -41,6 +41,7 @@ urlpatterns = [
     path('signup/', views.SignUp, name='signup'),
     #path('signin-validate/', views.SignIn_validate),
     path('signout/', views.SignOut, name='signout'),
-    path('oauth/', include('social_django.urls', namespace='social'))
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('password_reset/', views.ForgetPassword, name='password_reset')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
