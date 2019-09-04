@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['.localhost', '.herokuapp.com']
+ALLOWED_HOSTS = ['.localhost', '.herokuapp.com',]
 
 CKEDITOR_CONFIGS = {
 'default': {
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'social_django'
 ]
+
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -139,7 +140,7 @@ AUTHENTICATION_BACKENDS = (
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = config('TIME_ZONE')
 
 USE_I18N = True
 
