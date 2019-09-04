@@ -40,6 +40,7 @@ urlpatterns = [
     path('signin/', LoginView.as_view(template_name='diary_app/signin.html'), name='signin'),
     path('signup/', views.SignUp, name='signup'),
     #path('signin-validate/', views.SignIn_validate),
-    path('logout/', views.logout_User)
+    path('signout/', views.SignOut, name='signout'),
+    path('oauth/', include('social_django.urls', namespace='social'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

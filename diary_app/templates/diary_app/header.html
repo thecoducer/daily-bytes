@@ -57,7 +57,8 @@
       <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                  <img src="{% static '/images/user.svg' %}" alt="User" width=18px height=18px style="margin-right: 0px;">
+                  <!-- <img src="{% static '/images/user.svg' %}" alt="User" width=18px height=18px style="margin-right: 0px;"> -->
+                  Hello, {{ user.username }}
               </a>
       
               <div class="navbar-dropdown is-right">
@@ -70,8 +71,8 @@
                 <a class="navbar-item" href="/trash/">
                   Trash  
                 </a>
-                <a class="navbar-item" href="/logout/">
-                  Logout  
+                <a class="navbar-item" href="/signout/">
+                  Sign out  
                 </a>
                 
               </div> 

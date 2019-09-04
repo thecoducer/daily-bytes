@@ -12,6 +12,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 {% load static %}
 <link rel="stylesheet" href="{% static '/css/auth.css' %}">
+
+<style>
+.errorlist{
+    color: red;
+}
+</style>
+
 </head>
 <body>
 <div class="signin-form">
@@ -20,12 +27,13 @@
 		<h2>Daily Bytes</h2>
         <p class="hint-text">Sign up with</p>
 		<div class="social-btn text-center">
-			<a href="#" class="btn btn-primary btn-lg" title="GitHub"><i class="fa fa-github"></i></a>
-			<a href="#" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="{% url 'social:begin' 'github' %}" class="btn btn-primary btn-lg" title="GitHub"><i class="fa fa-github"></i></a>
+			<a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
 			<a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
 		</div>
         <div class="or-seperator"><b>or</b></div>
         
+        {{form.non_field_errors}}
         <div class="form-group">
             <input type="email" class="form-control input-lg" name="email" placeholder="Email" required="required">
         </div>
@@ -40,9 +48,11 @@
         </div>
 		<div class="form-group">
             <input type="password" class="form-control input-lg" name="password1" placeholder="Password" required="required">
+            <!-- {{form.errors.password1}} -->
         </div>
         <div class="form-group">
             <input type="password" class="form-control input-lg" name="password2" placeholder="Confirm password" required="required">
+            {{form.errors}}
         </div>
         
         <div class="form-group">

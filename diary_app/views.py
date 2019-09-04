@@ -135,7 +135,7 @@ def SignUp(request):
 
 
 @login_required
-def logout_User(request):
+def SignOut(request):
         logout(request)
         return redirect('signin')
 

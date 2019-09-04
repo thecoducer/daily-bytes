@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'diary_app',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'social_django'
 ]
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
@@ -61,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'diary_proj.urls'
@@ -76,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -113,6 +118,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication Backend
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.yahoo.YahooOpenId',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -138,5 +156,14 @@ MEDIA_ROOT = 'media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'signin'
+LOGOUT_URL = 'signout'
+
+SOCIAL_AUTH_GITHUB_KEY = '75d20d4024ec7cabd7b6'
+SOCIAL_AUTH_GITHUB_SECRET = 'd84f7bcd0ca60c55f7fff30605761399ba08425e'
+
+
+SOCIAL_AUTH_TWITTER_KEY = 'Gz7qO0duT4pq8wNHzHajYs0Op'
+SOCIAL_AUTH_TWITTER_SECRET = 'dtUENHV9aLznW95Poc1eiyPLdhAT3OZo78ibioowfYzNLEMEeR'
+
 
 django_heroku.settings(locals())
