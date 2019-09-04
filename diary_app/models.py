@@ -7,8 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class Entry(models.Model):
-    #author = models.ForeignKey(User, on_delete=models.CASCADE) # User is an auth model
-    author = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE) # User is an auth model
     title = models.CharField(max_length=100, default='', verbose_name="")
     # text = RichTextField()
     text = RichTextUploadingField(verbose_name="")
@@ -21,8 +20,8 @@ class Entry(models.Model):
     # objects corresponds to each row
     # id is the primary key in our table
     # it is an auto-incremented value
-    def __str__(self):
-        return 'Entry #{}'.format(self.id)
+    """ def __str__(self):
+        return 'Entry #{}'.format(self.id) """
 
     class Meta:
         verbose_name_plural = 'entries'
