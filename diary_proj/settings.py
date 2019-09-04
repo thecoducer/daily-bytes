@@ -165,8 +165,23 @@ SOCIAL_AUTH_GITHUB_SECRET = 'd84f7bcd0ca60c55f7fff30605761399ba08425e'
 SOCIAL_AUTH_TWITTER_KEY = 'Gz7qO0duT4pq8wNHzHajYs0Op'
 SOCIAL_AUTH_TWITTER_SECRET = 'dtUENHV9aLznW95Poc1eiyPLdhAT3OZo78ibioowfYzNLEMEeR'
 
-SOCIAL_AUTH_GOOGLE_KEY = '619503310999-7fbbc8f38gsrdgkme8d810tvdiak5a7u.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_SECRET = 'AYszhUoX59zHsp5UgrgZPXlm'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '619503310999-7fbbc8f38gsrdgkme8d810tvdiak5a7u.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'AYszhUoX59zHsp5UgrgZPXlm'
+
+SOCIAL_AUTH_KEY = '619503310999-7fbbc8f38gsrdgkme8d810tvdiak5a7u.apps.googleusercontent.com'
+SOCIAL_AUTH_SECRET = 'AYszhUoX59zHsp5UgrgZPXlm'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+)
 
 
 django_heroku.settings(locals())
