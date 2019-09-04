@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '3s@8*%rpq13e03-5-_(9ow^*9f&c5rar(5wr%vhs=_k16@(r3i'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -160,18 +160,17 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'signin'
 LOGOUT_URL = 'signout'
 
-SOCIAL_AUTH_GITHUB_KEY = '75d20d4024ec7cabd7b6'
-SOCIAL_AUTH_GITHUB_SECRET = 'd84f7bcd0ca60c55f7fff30605761399ba08425e'
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
 
+SOCIAL_AUTH_TWITTER_KEY = config('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = config('SOCIAL_AUTH_TWITTER_SECRET')
 
-SOCIAL_AUTH_TWITTER_KEY = 'Gz7qO0duT4pq8wNHzHajYs0Op'
-SOCIAL_AUTH_TWITTER_SECRET = 'dtUENHV9aLznW95Poc1eiyPLdhAT3OZo78ibioowfYzNLEMEeR'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '619503310999-7fbbc8f38gsrdgkme8d810tvdiak5a7u.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'AYszhUoX59zHsp5UgrgZPXlm'
-
-SOCIAL_AUTH_KEY = '619503310999-7fbbc8f38gsrdgkme8d810tvdiak5a7u.apps.googleusercontent.com'
-SOCIAL_AUTH_SECRET = 'AYszhUoX59zHsp5UgrgZPXlm'
+SOCIAL_AUTH_KEY = config('SOCIAL_AUTH_KEY')
+SOCIAL_AUTH_SECRET = config('SOCIAL_AUTH_SECRET')
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
