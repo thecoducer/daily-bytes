@@ -29,6 +29,7 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', EntryListView.as_view(), name = 'home'),
+    #path('', views.index, name='home'),
     path('add/', views.add, name = 'add'),
     path('delete/<int:id>', views.delete),
     path('edit/<int:id>', views.edit),

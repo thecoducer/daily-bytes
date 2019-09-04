@@ -21,6 +21,7 @@ from django.views.generic import (
     # retrive the data from the database, pass it to the template and loop over that
     entries = Entry.objects.order_by('-date_posted') # to set a definite order
     count_entries = Entry.objects.all().count()
+    entries = Entry.objects.filter(author=request.user)
     context = {'entries': entries, 'count_entries': count_entries}
     return render(request, 'diary_app/home.html', context) """
 
@@ -43,6 +44,10 @@ class EntryListView(ListView):
                 # Add any other variables to the context here
                 ...
                 return context
+
+        """ def get_queryset(request):
+                queryset = Entry.objects.filter(author=request.user)
+                return queryset """
 
 
 @login_required
