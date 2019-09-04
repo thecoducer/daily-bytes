@@ -33,9 +33,9 @@
 
         <p class="hint-text">Sign in with</p>
 		<div class="social-btn text-center">
-			<a href="{% url 'social:begin' 'github' %}" class="btn btn-primary btn-lg" title="GitHub"><i class="fa fa-github"></i></a>
-			<a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
-			<a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+			<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}" class="btn btn-primary btn-lg" title="GitHub"><i class="fa fa-github"></i></a>
+			<a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
 		</div>
 
 		<div class="or-seperator"><b>or</b></div>
