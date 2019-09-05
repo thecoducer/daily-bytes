@@ -46,7 +46,7 @@
                     
                 <a class="button" href="{% url 'home' %}"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
 
-                <button class="button is-success is-outlined" type="submit" name="save" value="save" onclick="return CheckCKE()"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
+                <button class="button is-success is-outlined" type="submit" name="save" value="save" onclick="CheckCKE()"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
                 
             </div>
 
@@ -60,7 +60,6 @@
                 {
                     if ( CKEDITOR.instances.id_text.getData() == '' )
                         alert( 'Please write something.' );
-                        return false;
                 }
             </script>
 

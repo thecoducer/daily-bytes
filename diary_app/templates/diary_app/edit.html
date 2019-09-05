@@ -48,7 +48,7 @@
            
             <a class="button" onclick="goback()"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
 
-            <button class="button is-success is-outlined" type="submit" onclick="return CheckCKE()"><img src="{% static '/images/save.svg' %}" alt="Save" width=15px height=15px style="margin-right: 10px;">Update</button>
+            <button class="button is-success is-outlined" type="submit" onclick="CheckCKE()"><img src="{% static '/images/save.svg' %}" alt="Save" width=15px height=15px style="margin-right: 10px;">Update</button>
             
         </div>
         </form>
@@ -62,7 +62,6 @@
         {
             if ( CKEDITOR.instances.id_text.getData() == '' )
                 alert( 'Please write something.' );
-                return false;
         }
         </script>
 
