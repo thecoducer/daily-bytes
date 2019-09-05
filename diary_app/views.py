@@ -17,16 +17,19 @@ from django.views.generic import (
 
 # Create your views here.
 
-""" def index(request):
+@login_required
+def index(request):
     # retrive the data from the database, pass it to the template and loop over that
-    entries = Entry.objects.order_by('-date_posted') # to set a definite order
-    count_entries = Entry.objects.all().count()
+    #entries = Entry.objects.order_by('-date_posted') # to set a definite order
+    #count_entries = Entry.objects.all().count()
     entries = Entry.objects.filter(author=request.user)
+    count_entries = entries.count()
+    entries = entries.order_by('-date_posted')
     context = {'entries': entries, 'count_entries': count_entries}
-    return render(request, 'diary_app/home.html', context) """
+    return render(request, 'diary_app/home.html', context)
 
 
-class EntryListView(ListView):
+""" class EntryListView(ListView):
         model = Entry 
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
@@ -45,7 +48,7 @@ class EntryListView(ListView):
                 ...
                 return context
 
-        """ def get_queryset(request):
+         def get_queryset(request):
                 queryset = Entry.objects.filter(author=request.user)
                 return queryset """
 
@@ -54,8 +57,19 @@ class EntryListView(ListView):
 def add(request):
     if request.method == 'POST':
         form = EntryForm(request.POST)
+        title = request.POST.get('title')
+        text = request.POST.get('text')
+        drafts = request.POST.get('drafts')
+        save = request.POST.get('save')
 
-        if form.is_valid():
+        if drafts is not None:
+                drafts_flag = True 
+                entry_save = Entry(title=title, text=text, drafts=drafts_flag, author=request.user)
+                entry_save.save()
+                current = Entry.objects.latest('date_posted') # fetching latest entry
+                return redirect('readmore', id=current.id)
+
+        if save is not None:
             new = form.save(commit=False)
             new.author = request.user
             new.save()

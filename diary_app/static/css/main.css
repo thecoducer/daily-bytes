@@ -250,3 +250,11 @@ background: #eaeaea no-repeat 20px 25px;
   margin-top: 20px;
 }
   
+
+.media-content:hover .media-right{
+  visibility: visible;
+}
+
+.media-right {
+  visibility: hidden;
+}

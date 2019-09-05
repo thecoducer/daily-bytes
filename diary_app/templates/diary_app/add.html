@@ -49,8 +49,12 @@
                         <a class="button" href="{% url 'home' %}"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
                     </div>
 
+                    <div class="control">
+                        <button class="button is-success is-outlined" type="submit" name="drafts" id="id_drafts"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save to drafts</button>
+                    </div>
+
                 <div class="control">
-                    <button class="button is-success is-outlined" type="submit"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
+                    <button class="button is-success is-outlined" type="submit" name="save"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
                 </div>
             </div>
 
