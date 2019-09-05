@@ -29,9 +29,11 @@
 	<form method="POST">
 		{% csrf_token %}
 
-		<h2>Daily Bytes</h2>
+        <h2>Daily Bytes</h2>
+        
+        <div class="text-center medium" style="margin-top: 10px; margin-bottom: 16px;">Write your hearts out byte by byte</div>
 
-        <p class="hint-text">Sign in with</p>
+        <p class="hint-text" style="margin-bottom: 10px;">Sign in with</p>
 		<div class="social-btn text-center">
 			<a href="{% url 'social:begin' 'github' %}" class="btn btn-primary btn-lg" title="GitHub"><i class="fa fa-github"></i></a>
 			<a href="{% url 'social:begin' 'twitter' %}" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
