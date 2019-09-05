@@ -15,7 +15,7 @@ class Entry(models.Model):
     date_posted = models.DateTimeField(auto_now_add = True)
     # auto_now_add gets the time when a entry is created
     bio = models.TextField(max_length=500, blank=True)
-    drafts = models.BooleanField(default=False)
+    trash = models.BooleanField(default=False)
     # str is a text representation of each object in our model
     # objects corresponds to each row
     # id is the primary key in our table

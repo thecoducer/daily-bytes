@@ -78,25 +78,25 @@
             
         {% for entry in entries %}
 
-        <article class="media">
+            <article class="media">
 
-                <div class="media-content">
-                    <a href="/entry/{{entry.id}}">
-                    <div class="content notification readmore-div">
-                        <p>
-                            <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
-                        </p>
-                    </div>
-                    </a>
+            <div class="media-content">
+                <a href="/entry/{{entry.id}}">
+                <div class="content notification readmore-div">
+                    <p>
+                        <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
+                    </p>
                 </div>
+                </a>
+            </div>
 
-                <div class="media-right">
-                        <a class="button is-info is-outlined" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
-    
-                        <a class="button is-danger is-outlined" href="/delete/{{entry.id}}" onclick="del()"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
-                </div>
+            <div class="media-right">
+                    <a class="button is-info is-outlined" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
 
-        </article>
+                    <a class="button is-danger is-outlined" href="/delete/{{entry.id}}" onclick="del()"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
+            </div>
+
+            </article>
 
             <!-- delete modal-->
         <!-- <div id="del_mod" class="modal">

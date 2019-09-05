@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trash -  Daily Bytes</title>
+    
+    <!-- <script>
+            function del(){
+                document.getElementById("del_mod").classList.add("is-active");
+            }
+
+            function del_close(){
+                document.getElementById("del_mod").classList.remove("is-active");
+            }
+    </script> -->
+
+</head>
+
+<body>
+    {% extends "./base.html" %}
+    {% block content %}
+    {% load static %}
+
+    <section class="hero is-info">
+        <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Trash
+            </h1>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+        {% for entry in entries %}
+
+            <article class="media">
+
+            <div class="media-content">
+                <a href="/entry/{{entry.id}}">
+                <div class="content notification readmore-div">
+                    <p>
+                        <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
+                    </p>
+                </div>
+                </a>
+            </div>
+
+            <div class="media-right">
+                    <button class="button is-success is-outlined" type="submit" name="restore" value="restore" title="Restore from trash" href="/delete/{{entry.id}}"><img src="{% static '/images/restore.svg' %}" alt="Delete" width=15px height=15px color: red;></button>
+
+                    <button class="button is-danger is-outlined" type="submit" name="delete-forever" value="delete-forever" title="Delete forever" href="/delete/{{entry.id}}"><img src="{% static '/images/trash.svg' %}" alt="Delete" width=15px height=15px color: red;></button>
+            </div>
+
+            </article>
+
+        {% endfor %}
+
+        </div>
+
+    </section>
+    {% endblock %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147095017-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-147095017-1');
+    </script>
+
+</body>
+</html>

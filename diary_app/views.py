@@ -20,7 +20,7 @@ from django.views.generic import (
 
 @login_required
 def home(request):
-    entries = Entry.objects.filter(author=request.user)
+    entries = Entry.objects.filter(author=request.user, trash=False)
     count_entries = entries.count()
     entries = entries.order_by('-date_posted')
     paginator = Paginator(entries, 5)   
@@ -30,8 +30,8 @@ def home(request):
     return render(request, 'diary_app/home.html', context)
 
 
-""" class EntryListView(ListView):
-        model = Entry 
+""" class PostListView(ListView):
+        model = Entry
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
@@ -43,7 +43,7 @@ def home(request):
 
         # Override get_context_data and add any additional querysets to the context.
         def get_context_data(self, **kwargs):
-                context = super(EntryListView, self).get_context_data(**kwargs)
+                context = super(PostListView, self).get_context_data(**kwargs)
                 context['count_entries'] = Entry.objects.all().count()
                 # Add any other variables to the context here
                 ...
@@ -59,12 +59,12 @@ def add(request):
         drafts = request.POST.get('drafts')
         save = request.POST.get('save')
 
-        if drafts is not None:
+        """ if drafts is not None:
                 drafts_flag = True 
-                entry_save = Entry(title=title, text=text, drafts=drafts_flag, author=request.user)
-                entry_save.save()
-                current = Entry.objects.latest('date_posted') # fetching latest entry
-                return redirect('readmore', id=current.id)
+                post_save = Entry(title=title, text=text, drafts=drafts_flag, author=request.user)
+                post_save.save()
+                current = Entry.objects.latest('date_posted')
+                return redirect('readmore', id=current.id) """
 
         if save is not None:
             new = form.save(commit=False)
@@ -82,7 +82,6 @@ def add(request):
 
 @login_required
 def delete(request, id):
-        #entry = Entry.objects.get(id=id)
         entry = get_object_or_404(Entry, id=id, author=request.user)
         entry.delete()
         return redirect('home')
@@ -92,7 +91,7 @@ def delete(request, id):
 def edit(request,id):
         #entry = Entry.objects.get(id=id)
         entry = get_object_or_404(Entry, id=id, author=request.user)
-        if request.method == "POST":
+        if request.method == 'POST':
                 form = EntryForm(request.POST, instance = entry)
                 if form.is_valid():
                         form.save()
@@ -119,7 +118,7 @@ def contact(request):
 
 
 def SignUp(request):
-        if request.method == "POST":
+        if request.method == 'POST':
                 form = UserForm(request.POST)
                 if form.is_valid():
                         form.save()
@@ -149,3 +148,12 @@ def SignUp(request):
 def SignOut(request):
         logout(request)
         return redirect('signin')
+
+
+@login_required
+def Trash(request):
+        entries = Entry.objects.filter(author=request.user, trash=True)
+        entries = entries.order_by('-date_posted')
+        count_entries = entries.count()
+        context = {'entries': entries, 'count_entries': count_entries}
+        return render(request, 'diary_app/trash.html', context)

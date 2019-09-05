@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class EntryForm(ModelForm):
     class Meta: # Meta class is for attach additional information
-        model = Entry 
+        model = Entry
         fields = ('title', 'text', )
 
         # below is done in ModelForm

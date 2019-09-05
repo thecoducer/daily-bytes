@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add new byte</title>
+    <title>Add new entry - Daily Bytes</title>
     <script src="https://cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
 </head>
 
@@ -15,6 +15,7 @@
     {% load static %}
 
     <form method="POST">
+    {% csrf_token %}
 
     <section class="hero is-info">
             <div class="hero-body">
@@ -29,9 +30,6 @@
 
     <section class="section">
         <div class="container">
-
-           
-            {% csrf_token %}
             
             <div class="field">
                 <div class="control">
@@ -47,10 +45,8 @@
             <div class="buttons is-right">
                     
                 <a class="button" href="{% url 'home' %}"><img src="{% static '/images/cancel.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Cancel</a>
-                
-                <button class="button is-success is-outlined" type="submit" name="drafts" id="id_drafts"><img src="{% static '/images/file.svg' %}" alt="Save drafts" width=12px height=12px style="margin-right: 10px;">Save as draft</button>
 
-                <button class="button is-success is-outlined" type="submit" name="save"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
+                <button class="button is-success is-outlined" type="submit" name="save" value="save"><img src="{% static '/images/save.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">Save</button>
                 
             </div>
 
