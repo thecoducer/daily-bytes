@@ -14,7 +14,6 @@ class Entry(models.Model):
     # verbose_name = "" is done to hide the labels
     date_posted = models.DateTimeField(auto_now_add = True)
     # auto_now_add gets the time when a entry is created
-    bio = models.TextField(max_length=500, blank=True)
     trash = models.BooleanField(default=False)
     # str is a text representation of each object in our model
     # objects corresponds to each row
@@ -26,3 +25,7 @@ class Entry(models.Model):
     class Meta:
         verbose_name_plural = 'entries'
 
+
+class UserData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)

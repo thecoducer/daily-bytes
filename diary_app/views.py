@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from diary_app.models import Entry
-from diary_app.forms import EntryForm, UserForm
+from diary_app.models import Entry, UserData
+from django.contrib.auth.models import User
+from diary_app.forms import EntryForm, UserForm, ProfileUserForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -115,7 +116,8 @@ def about(request):
 
 @login_required
 def contact(request):
-        return render(request, "diary_app/contact.html")
+        user = get_object_or_404(User, username = request.user.username)
+        return render(request, "diary_app/contact.html", {'user': user})
 
 
 def SignUp(request):
@@ -158,3 +160,28 @@ def Trash(request):
         count_entries = entries.count()
         context = {'entries': entries, 'count_entries': count_entries}
         return render(request, 'diary_app/trash.html', context)
+
+
+@login_required
+def Profile(request):
+        get_user = get_object_or_404(User, username = request.user.username)
+        try:
+                get_bio = UserData.objects.get(user=request.user)
+        except:
+                get_bio = ""
+
+        if request.method == 'POST':
+                uform = UserForm(request.POST)
+                puform = ProfileUserForm(request.POST)
+                print("Hello world")
+                if uform.is_valid() and puform.is_valid():
+                        profile = puform.save(commit=False)
+                        profile.user = request.user
+                        puform.save()
+                        uform.save()
+                        return redirect('home')
+        else:
+                uform = UserForm()
+                puform = ProfileUserForm()
+
+        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'get_user': get_user, 'get_bio': get_bio})

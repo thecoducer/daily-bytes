@@ -58,7 +58,11 @@
           <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                   <!-- <img src="{% static '/images/user.svg' %}" alt="User" width=18px height=18px style="margin-right: 0px;"> -->
-                  Hello, {{ user.username }}
+                  {% if user.first_name %}
+                    Hello, {{ user.first_name }}
+                  {% elif user.username %}
+                    Hello, {{ user.username}}
+                  {% endif %}
               </a>
       
               <div class="navbar-dropdown is-right">

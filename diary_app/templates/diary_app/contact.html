@@ -20,7 +20,11 @@
                 Hello
             </h1>
             <h2 class="subtitle">
-                {{ user.username }}!
+              {% if user.first_name %}
+                  {{ user.first_name }}!
+              {% elif user.username %}
+                  {{ user.username}}!
+              {% endif %}
             </h2>
         </div>
         </div>

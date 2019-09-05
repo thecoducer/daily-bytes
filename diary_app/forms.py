@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from diary_app.models import Entry
+from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -18,5 +18,11 @@ class EntryForm(ModelForm):
 class UserForm(UserCreationForm):
     class Meta:
         model = User 
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ('email', 'username', 'password1', 'password2', )
+
+    
+class ProfileUserForm(ModelForm):
+    class Meta:
+        model = UserData
+        fields = ('user', 'bio', )
 
