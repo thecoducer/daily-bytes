@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.paginator import Paginator
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -18,13 +19,13 @@ from django.views.generic import (
 # Create your views here.
 
 @login_required
-def index(request):
-    # retrive the data from the database, pass it to the template and loop over that
-    #entries = Entry.objects.order_by('-date_posted') # to set a definite order
-    #count_entries = Entry.objects.all().count()
+def home(request):
     entries = Entry.objects.filter(author=request.user)
     count_entries = entries.count()
     entries = entries.order_by('-date_posted')
+    paginator = Paginator(entries, 5)   
+    page = request.GET.get('page') 
+    entries = paginator.get_page(page)
     context = {'entries': entries, 'count_entries': count_entries}
     return render(request, 'diary_app/home.html', context)
 
@@ -34,7 +35,7 @@ def index(request):
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
-        paginate_by = 10
+        paginate_by = 5
 
         @method_decorator(login_required)
         def dispatch(self, *args, **kwargs):
@@ -46,11 +47,7 @@ def index(request):
                 context['count_entries'] = Entry.objects.all().count()
                 # Add any other variables to the context here
                 ...
-                return context
-
-         def get_queryset(request):
-                queryset = Entry.objects.filter(author=request.user)
-                return queryset """
+                return context """
 
 
 @login_required
@@ -86,7 +83,7 @@ def add(request):
 @login_required
 def delete(request, id):
         #entry = Entry.objects.get(id=id)
-        entry = get_object_or_404(Entry, id=id)
+        entry = get_object_or_404(Entry, id=id, author=request.user)
         entry.delete()
         return redirect('home')
 
@@ -94,7 +91,7 @@ def delete(request, id):
 @login_required
 def edit(request,id):
         #entry = Entry.objects.get(id=id)
-        entry = get_object_or_404(Entry, id=id)
+        entry = get_object_or_404(Entry, id=id, author=request.user)
         if request.method == "POST":
                 form = EntryForm(request.POST, instance = entry)
                 if form.is_valid():
@@ -108,7 +105,7 @@ def edit(request,id):
 @login_required
 def readmore(request, id):
     #entry = Entry.objects.get(id=id)
-    entry = get_object_or_404(Entry, id=id)
+    entry = get_object_or_404(Entry, id=id, author=request.user)
     return render(request, "diary_app/readmore.html", {'entry': entry})
 
 
