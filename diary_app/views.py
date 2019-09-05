@@ -66,7 +66,7 @@ def add(request):
                 current = Entry.objects.latest('date_posted')
                 return redirect('readmore', id=current.id) """
 
-        if save is not None:
+        if save is not None and form.is_valid():
             new = form.save(commit=False)
             new.author = request.user
             new.save()
@@ -98,7 +98,8 @@ def edit(request,id):
                         return redirect('readmore', id=id)
         else:
                 form = EntryForm()
-                return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
+                #return render(request,"diary_app/edit.html",{'eform':form,'entry':entry})
+        return render(request,"diary_app/edit.html", {'entry': entry}) # indentation ?
 
 
 @login_required
@@ -125,7 +126,7 @@ def SignUp(request):
                         return redirect("/signin/")
         else:
                 form = UserForm()
-        return render(request, "users/signup.html", {'form': form})
+        return render(request, "users/signup.html", {'form': form}) # indentation?
 
 
 """ def SignIn(request):
