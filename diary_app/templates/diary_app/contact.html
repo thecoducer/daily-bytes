@@ -36,12 +36,13 @@
 
             <br>
 
-            <form method="POST" action="https://formspree.io/mayukh5741@gmail.com">
+            <form method="POST">
+              {% csrf_token %}
                 
                   <div class="field">
                     <label class="label">Email</label>
                     <div class="control has-icons-left has-icons-right">
-                      <input name="email" class="input is-medium edit-title" type="email" placeholder="Enter email">
+                      <input name="sender" class="input is-medium edit-title" type="email" placeholder="Enter email">
                       <span class="icon is-small is-left">
                         <img src="{% static '/images/envelope.svg' %}" alt="Add new byte" width=15px height=15px style="margin-left: 5px; margin-right: 5px;">
                       </span>

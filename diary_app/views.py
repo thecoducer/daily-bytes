@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from diary_app.forms import EntryForm, UserForm, ProfileUserForm
+from diary_app.forms import EntryForm, UserForm, ProfileUserForm, ContactForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
+from django.conf import settings
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -126,7 +128,15 @@ def about(request):
 @login_required
 def contact(request):
         user = get_object_or_404(User, username = request.user.username)
-        return render(request, "diary_app/contact.html", {'user': user})
+        if request.method == 'POST':
+                form = ContactForm(request.POST)
+                message = request.POST.get('message')
+                sender = request.POST.get('sender')
+                message = message + "\n\n Sender's Email: " + sender
+                send_mail('Daily Bytes contact form', message, sender, [settings.EMAIL_HOST_USER], fail_silently=False)
+        else:
+                form = ContactForm()
+        return render(request, "diary_app/contact.html", {'user': user, 'form': form})
 
 
 def SignUp(request):

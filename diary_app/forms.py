@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django import forms
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -26,3 +27,6 @@ class ProfileUserForm(ModelForm):
         model = UserData
         fields = ('user', 'bio', )
 
+class ContactForm(forms.Form):
+    sender = forms.EmailField()
+    message = forms.CharField()
