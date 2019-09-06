@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily Bytes</title>
-    
-    <!-- <script>
-            function del(){
-                document.getElementById("del_mod").classList.add("is-active");
-            }
 
-            function del_close(){
-                document.getElementById("del_mod").classList.remove("is-active");
-            }
-    </script> -->
+    <script>
+        function del() {
+            $('#del_mod').addClass('is-active');
+        }
+
+        function del_close() {
+            $('#del_mod').removeClass('is-active');
+        }
+    </script>
 
 </head>
 
@@ -26,14 +26,14 @@
 
     <section class="hero is-info">
         <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                Write your hearts out
-            </h1>
-            <h2 class="subtitle">
-                byte by byte.
-            </h2>
-        </div>
+            <div class="container">
+                <h1 class="title">
+                    Write your hearts out
+                </h1>
+                <h2 class="subtitle">
+                    byte by byte.
+                </h2>
+            </div>
         </div>
     </section>
 
@@ -41,109 +41,116 @@
         <div class="container">
 
             <div class="container my-top-bar">
-            <div class="columns notification">
-                <div class="column is-two-thirds">
-                    <p class="subtitle is-5">
-                        {% if count_entries < 1 %}
+                <div class="columns notification">
+                    <div class="column is-two-thirds">
+                        <p class="subtitle is-5">
+                            {% if count_entries < 1 %}
                             You don't have any entries
-                        {% else %}
+                            {% else %}
                             <strong>{{ count_entries }}</strong> entries
-                        {% endif %}
-                    </p>
-                </div>
-                <!-- <div class="column">a</div>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <!-- <div class="column">a</div>
                 <div class="column">s</div> -->
-                <div class="column">
-                <div class="field has-addons">
-                    <p class="control">
-                        <input class="input" type="text" placeholder="keyword">
-                    </p>
-                    <p class="control">
-                        <button class="button">
-                            <img class="search-icon" src="{% static '/images/search.svg' %}" alt="Add new byte" width=15px height=15px>
-                        </button>
-                    </p>
+                    <div class="column">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <input class="input" type="text" placeholder="keyword">
+                            </p>
+                            <p class="control">
+                                <button class="button">
+                                    <img class="search-icon" src="{% static '/images/search.svg' %}" alt="Add new byte"
+                                        width=15px height=15px>
+                                </button>
+                            </p>
+                        </div>
                     </div>
-                    </div>
-                </div>
-                </div>
-
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <a class="button is-link is-outlined" href="{% url 'add' %}"><img src="{% static '/images/pen.svg' %}" alt="Add new byte" width=15px height=15px style="margin-right: 10px;">New entry</a>
                 </div>
             </div>
-        </article>
-            
-        {% for entry in entries %}
+
+            <article class="media">
+                <div class="media-content">
+                    <div class="content">
+                        <a class="button is-link is-outlined" href="{% url 'add' %}"><img
+                                src="{% static '/images/pen.svg' %}" alt="Add new byte" width=15px height=15px
+                                style="margin-right: 10px;">New entry</a>
+                    </div>
+                </div>
+            </article>
+
+            {% for entry in entries %}
 
             <article class="media">
 
-            <div class="media-content">
-                <a href="/entry/{{entry.id}}">
-                <div class="content notification readmore-div">
-                    <p>
-                        <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
-                    </p>
+                <div class="media-content">
+                    <a href="/entry/{{entry.id}}">
+                        <div class="content notification readmore-div">
+                            <p>
+                                <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
+                            </p>
+                        </div>
+                    </a>
                 </div>
-                </a>
-            </div>
 
-            <div class="media-right">
-                    <a class="button is-info is-outlined" href="/edit/{{entry.id}}"><img src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
+                <div class="media-right">
+                    <a class="button is-info is-outlined" href="/edit/{{entry.id}}"><img
+                            src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
 
-                    <a class="button is-danger is-outlined" href="/delete/{{entry.id}}" onclick="del()"><img src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
-            </div>
+                    <button class="button is-danger is-outlined" id="trash_can" onclick="del()"><img src="{% static '/images/delete.svg' %}"
+                            alt="Delete" width=15px height=15px color: red;></button>
+                </div>
 
             </article>
 
+            <hr>
+
             <!-- delete modal-->
-        <!-- <div id="del_mod" class="modal">
+            <div id="del_mod" class="modal">
                 <div class="modal-background" onclick="del_close()"></div>
                 <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Are you sure?</p>
-                  </header>
-                  <section class="modal-card-body">
-                    <i>{{ entry.title }}</i> will move to trash
-                  </section>
-                  <footer class="modal-card-foot">
-                    <a class="button is-danger" href="/delete/{{entry.id}}">Yes</a>
-                    <button class="button is-success is-outlined" onclick="del_close()">No</button>
-                  </footer>
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Are you sure?</p>
+                    </header>
+                    <section class="modal-card-body">
+                        <b>{{ entry.title }}</b> will be moved to trash
+                    </section>
+                    <footer class="modal-card-foot">
+                        <a class="button is-danger" href="/delete/{{entry.id}}">Yes</a>
+                        <button class="button is-success is-outlined" onclick="del_close()">No</button>
+                    </footer>
                 </div>
-              </div> -->
+            </div>
 
-        {% endfor %}
+            {% endfor %}
 
-       
 
-        <div class="has-text-centered page-list">
 
-            {% if is_paginated %}
+            <div class="has-text-centered page-list">
+
+                {% if is_paginated %}
 
                 {% if page_obj.has_previous %}
-                    <a class="pagination-previous" href="?page=1">First</a>
-                    <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a class="pagination-previous" href="?page=1">First</a>
+                <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 {% endif %}
-    
-                {% for num in page_obj.paginator.page_range %}
-                    {% if page_obj.number == num %}
-                        <a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a>
-                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                        <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
-                    {% endif %}
-                {% endfor %}
-    
-                {% if page_obj.has_next %}
-                    <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
-                    <a class="pagination-next" href="?page={{ .paginator.num_pages }}">Last</a>
-                {% endif %}
-    
-            {% endif %}
 
-        </div>
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="pagination-next" href="?page={{ .paginator.num_pages }}">Last</a>
+                {% endif %}
+
+                {% endif %}
+
+            </div>
         </div>
 
     </section>
@@ -152,12 +159,13 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147095017-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-147095017-1');
+        gtag('config', 'UA-147095017-1');
     </script>
 
 </body>
+
 </html>
