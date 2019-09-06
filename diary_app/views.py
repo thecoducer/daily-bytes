@@ -204,3 +204,7 @@ def Profile(request):
                 puform = ProfileUserForm()
 
         return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'get_user': get_user, 'get_bio': get_bio})
+
+
+def check(request):
+        return render(request, 'diary_app/new.html')
