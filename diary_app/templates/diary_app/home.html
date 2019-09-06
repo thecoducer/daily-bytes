@@ -121,27 +121,27 @@
 
         <div class="has-text-centered page-list">
 
-        {% if is_paginated %}
+            {% if is_paginated %}
 
-            {% if entries.has_previous %}
-                <a class="pagination-previous" href="?page=1">First</a>
-                <a class="pagination-previous" href="?page={{ entries.previous_page_number }}">Previous</a>
-            {% endif %}
-
-            {% for num in entries.paginator.page_range %}
-                {% if entries.number == num %}
-                    <a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a>
-                {% elif num > entries.number|add:'-3' and num < entries.number|add:'3' %}
-                    <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+                {% if page_obj.has_previous %}
+                    <a class="pagination-previous" href="?page=1">First</a>
+                    <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 {% endif %}
-            {% endfor %}
-
-            {% if entries.has_next %}
-                <a class="pagination-next" href="?page={{ entries.next_page_number }}">Next</a>
-                <a class="pagination-next" href="?page={{ .paginator.num_pages }}">Last</a>
+    
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="pagination-link" href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+    
+                {% if page_obj.has_next %}
+                    <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a class="pagination-next" href="?page={{ .paginator.num_pages }}">Last</a>
+                {% endif %}
+    
             {% endif %}
-
-        {% endif %}
 
         </div>
         </div>

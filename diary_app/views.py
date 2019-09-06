@@ -19,7 +19,7 @@ from django.views.generic import (
 
 # Create your views here.
 
-@login_required
+""" @login_required
 def home(request):
     entries = Entry.objects.filter(author=request.user, trash=False)
     count_entries = entries.count()
@@ -28,15 +28,15 @@ def home(request):
     page = request.GET.get('page') 
     entries = paginator.get_page(page)
     context = {'entries': entries, 'count_entries': count_entries}
-    return render(request, 'diary_app/home.html', context)
+    return render(request, 'diary_app/home.html', context) """
 
 
-""" class PostListView(ListView):
+class EntryListView(ListView):
         model = Entry
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
-        paginate_by = 5
+        paginate_by = 10
 
         @method_decorator(login_required)
         def dispatch(self, *args, **kwargs):
@@ -44,11 +44,20 @@ def home(request):
 
         # Override get_context_data and add any additional querysets to the context.
         def get_context_data(self, **kwargs):
-                context = super(PostListView, self).get_context_data(**kwargs)
-                context['count_entries'] = Entry.objects.all().count()
+                context = super(EntryListView, self).get_context_data(**kwargs)
+                entries = Entry.objects.filter(author=self.request.user)
+                context['count_entries'] = entries.count()
+                
                 # Add any other variables to the context here
                 ...
-                return context """
+                return context
+
+        def get_queryset(self):
+                entries = Entry.objects.filter(author=self.request.user, trash=False)
+                entries = entries.order_by('-date_posted')
+                return entries
+
+
 
 
 @login_required
