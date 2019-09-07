@@ -7,15 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily Bytes</title>
 
-    <script>
-        function del() {
-            $('#del_mod').addClass('is-active');
-        }
-
-        function del_close() {
-            $('#del_mod').removeClass('is-active');
-        }
-    </script>
+   
 
 </head>
 
@@ -99,14 +91,15 @@
 
                     <button class="button is-danger is-outlined" id="trash_can" onclick="del()"><img src="{% static '/images/delete.svg' %}"
                             alt="Delete" width=15px height=15px color: red;></button>
+                            
                 </div>
 
             </article>
 
             <hr>
-
+                
             <!-- delete modal-->
-            <div id="del_mod" class="modal">
+            <div id="{{entry.id}}" class="modal">
                 <div class="modal-background" onclick="del_close()"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
@@ -121,6 +114,16 @@
                     </footer>
                 </div>
             </div>
+
+            <script>
+                function del() {
+                    $('#{{entry.id}}').addClass('is-active');
+                }
+        
+                function del_close() {
+                    $('#{{entry.id}}').removeClass('is-active');
+                }
+            </script>
 
             {% endfor %}
 

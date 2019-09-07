@@ -52,9 +52,9 @@
             </div>
 
             <div class="media-right">
-                    <button class="button is-success is-outlined" type="submit" name="restore" value="restore" title="Restore from trash" href="/delete/{{entry.id}}"><img src="{% static '/images/restore.svg' %}" alt="Delete" width=15px height=15px color: red;></button>
+                    <a class="button is-success is-outlined" name="restore" value="restore" title="Restore from trash" href="/restore/{{entry.id}}"><img src="{% static '/images/restore.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
 
-                    <button class="button is-danger is-outlined" type="submit" name="delete-forever" value="delete-forever" title="Delete forever" href="/delete/{{entry.id}}"><img src="{% static '/images/trash.svg' %}" alt="Delete" width=15px height=15px color: red;></button>
+                    <a class="button is-danger is-outlined" name="delete-forever" value="delete-forever" title="Delete forever" href="/delete/{{entry.id}}"><img src="{% static '/images/trash.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
             </div>
 
             </article>

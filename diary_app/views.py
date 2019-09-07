@@ -47,7 +47,7 @@ class EntryListView(ListView):
         # Override get_context_data and add any additional querysets to the context.
         def get_context_data(self, **kwargs):
                 context = super(EntryListView, self).get_context_data(**kwargs)
-                entries = Entry.objects.filter(author=self.request.user)
+                entries = Entry.objects.filter(author=self.request.user, trash=False)
                 context['count_entries'] = entries.count()
                 
                 # Add any other variables to the context here
@@ -95,9 +95,22 @@ def add(request):
 @login_required
 def delete(request, id):
         entry = get_object_or_404(Entry, id=id, author=request.user)
-        entry.delete()
-        return redirect('home')
+        if entry.trash == False:
+                entry.trash = True
+                entry.save()
+        else:
+                entry.delete()
+        
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
+
+@login_required
+def restore(request, id):
+        entry = get_object_or_404(Entry, id=id, author=request.user)
+        if entry.trash == True:
+                entry.trash = False 
+                entry.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 @login_required
 def edit(request,id):
@@ -204,7 +217,3 @@ def Profile(request):
                 puform = ProfileUserForm()
 
         return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'get_user': get_user, 'get_bio': get_bio})
-
-
-def check(request):
-        return render(request, 'diary_app/new.html')
