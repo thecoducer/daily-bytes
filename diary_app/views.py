@@ -60,8 +60,6 @@ class EntryListView(ListView):
                 return entries
 
 
-
-
 @login_required
 def add(request):
     if request.method == 'POST':
@@ -188,9 +186,7 @@ def SignOut(request):
 @login_required
 def Trash(request):
         entries = Entry.objects.filter(author=request.user, trash=True)
-        entries = entries.order_by('-date_posted')
-        count_entries = entries.count()
-        context = {'entries': entries, 'count_entries': count_entries}
+        context = {'entries': entries}
         return render(request, 'diary_app/trash.html', context)
 
 

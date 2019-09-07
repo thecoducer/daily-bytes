@@ -34,29 +34,14 @@
 
             <div class="container my-top-bar">
                 <div class="columns notification">
-                    <div class="column is-two-thirds">
-                        <p class="subtitle is-5">
+                    <div class="column">
+                        <p class="subtitle is-5 has-text-centered">
                             {% if count_entries < 1 %}
                             You don't have any entries
                             {% else %}
                             <strong>{{ count_entries }}</strong> entries
                             {% endif %}
                         </p>
-                    </div>
-                    <!-- <div class="column">a</div>
-                <div class="column">s</div> -->
-                    <div class="column">
-                        <div class="field has-addons">
-                            <p class="control">
-                                <input class="input" type="text" placeholder="keyword">
-                            </p>
-                            <p class="control">
-                                <button class="button">
-                                    <img class="search-icon" src="{% static '/images/search.svg' %}" alt="Add new byte"
-                                        width=15px height=15px>
-                                </button>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

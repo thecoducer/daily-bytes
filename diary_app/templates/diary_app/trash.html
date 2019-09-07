@@ -37,6 +37,7 @@
     <section class="section">
         <div class="container">
             
+        {% if entries %}    
         {% for entry in entries %}
 
             <article class="media">
@@ -60,6 +61,14 @@
             </article>
 
         {% endfor %}
+        {% else %}
+        <div class="columns notification">
+            <div class="column">
+                <p class="subtitle is-5 has-text-centered">
+                    Your trash is empty
+                </p>
+            </div>
+        {% endif %}
 
         </div>
 
