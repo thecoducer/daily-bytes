@@ -14,17 +14,13 @@ An online diary app where you can write whatever you wish and everything gets sa
 ### Hosted on
 * [Heroku](https://www.heroku.com/)
 
-### Screenshots
-- Sign in 
+## Screenshots
+### Sign in 
 ![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-24-20.png)
-- Home
+### Home
 ![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-24.png)
-- Add entry
+### Add entry
 ![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-34.png)
-- Read entry
-![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-45.png)
-- Editing entry
-![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-38-14.png)
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
@@ -58,6 +54,14 @@ TIME_ZONE = <your time zone>
 ALLOWED_HOSTS = localhost, .herokuapp.com, https://dailybytes.herokuapp.com, https://dailybytes.herokuapp.com/, http://dailybytes.herokuapp.com, http://dailybytes.herokuapp.com/
 ```
 
+### Running the app
+- Create the database: ```python manage.py migrate```
+- Create admin account: ```python manage.py creatsuperuser```
+- Run the app: ```python manage.py runserver```
+
+## Improvements
+Check [this](https://github.com/thecoducer/daily-bytes/issues/1) list
+
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Go ahead and fork the project.
 
@@ -65,6 +69,5 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-
-Mayukh Datta - [@thecoducer](https://twitter.com/thecoducer)
-Email - [mayukh5741@gmail.com](mailto:mayukh5741@gmail.com)
+Twitter: [@thecoducer](https://twitter.com/thecoducer)
+Email: [mayukh5741@gmail.com](mailto:mayukh5741@gmail.com)
