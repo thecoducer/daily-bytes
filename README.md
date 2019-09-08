@@ -59,7 +59,7 @@ ALLOWED_HOSTS = localhost, .herokuapp.com, https://dailybytes.herokuapp.com, htt
 
 ### Running the app
 - Create the database: ```python manage.py migrate```
-- Create admin account: ```python manage.py creatsuperuser```
+- Create admin account: ```python manage.py createsuperuser```
 - Run the app: ```python manage.py runserver```
 
 ## Improvements
@@ -72,5 +72,5 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-Twitter: [@thecoducer](https://twitter.com/thecoducer)
+Twitter: [@thecoducer](https://twitter.com/thecoducer) \
 Email: [mayukh5741@gmail.com](mailto:mayukh5741@gmail.com)
