@@ -1,7 +1,7 @@
 # Daily Bytes
 An online diary app where you can write whatever you wish and everything gets saved on the cloud.
 
-### Built With
+### Built with
 * [Django](https://www.djangoproject.com/)
 * [Bulma](https://bulma.io/)
 
@@ -14,14 +14,23 @@ An online diary app where you can write whatever you wish and everything gets sa
 ### Hosted on
 * [Heroku](https://www.heroku.com/)
 
+### Screenshots
+- Sign in 
+![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-24-20.png)
+- Home
+![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-24.png)
+- Add entry
+![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-34.png)
+- Read entry
+![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-45.png)
+- Editing entry
+![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-38-14.png)
+
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
 
 ### Installation
-1. Clone the repo
-```sh
-git clone https://github.com/thecoducer/daily-bytes.git
-```
+1. Clone the repo ```git clone https://github.com/thecoducer/daily-bytes.git```
 2. ```cd daily-bytes```
 3. Create a virtual environment in Python: ```virtualenv -p python3 env```
 4. Activate env: ```source env/bin/activate```
