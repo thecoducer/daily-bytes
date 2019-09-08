@@ -2,10 +2,13 @@
 An online diary app where you can write whatever you wish and everything gets saved on the cloud.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Django](https://www.djangoproject.com/)
+* [Bulma](https://bulma.io/)
+
+### Plug-ins / Add-ons
+* [CKEditor](https://ckeditor.com/)
+* [python-decouple](https://pypi.org/project/python-decouple/)
+* []
 
 
 
