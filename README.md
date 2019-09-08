@@ -1,6 +1,9 @@
 # Daily Bytes
 An online diary app where you can write whatever you wish and everything gets saved on the cloud.
 
+### Objective
+To learn the Django framework
+
 ### Built with
 * [Django](https://www.djangoproject.com/)
 * [Bulma](https://bulma.io/)
