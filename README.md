@@ -26,7 +26,7 @@ To learn the Django framework
 ![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-34.png)
 
 ## Getting Started
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow the steps below.
 
 ### Installation
 1. Clone the repo ```git clone https://github.com/thecoducer/daily-bytes.git```
