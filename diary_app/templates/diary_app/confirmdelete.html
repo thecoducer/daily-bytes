@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Confirm delete</title>
+
+</head>
+
+<body>
+    {% extends "./base.html" %}
+    {% block content %}
+    {% load static %}
+
+    <section class="hero is-info">
+        <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Are you sure?
+            </h1>
+            <h2 class="subtitle">
+                <b>{{entry.title}}</b> will be moved to trash
+            </h2>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="buttons">
+                <a class="button is-danger" href="/delete/{{entry.id}}">Yes, delete</a>
+                <button class="button is-success is-outlined" onclick="goback()">No</button>
+            </div>
+        </div>
+
+    </section>
+    {% endblock %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147095017-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-147095017-1');
+    </script>
+
+</body>
+</html>

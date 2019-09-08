@@ -96,10 +96,16 @@ def delete(request, id):
         if entry.trash == False:
                 entry.trash = True
                 entry.save()
+                return redirect('home')
         else:
                 entry.delete()
-        
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
+@login_required
+def confirmdelete(request, id):
+        entry = get_object_or_404(Entry, id=id, author=request.user)
+        return render(request, "diary_app/confirmdelete.html", {'entry': entry})
 
 
 @login_required

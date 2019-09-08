@@ -74,9 +74,9 @@
                     <a class="button is-info is-outlined" href="/edit/{{entry.id}}"><img
                             src="{% static '/images/edit.svg' %}" alt="Edit" width=15px height=15px></a>
 
-                    <button class="button is-danger is-outlined" id="trash_can" onclick="del()"><img
+                    <a class="button is-danger is-outlined" id="trash_can" href="/confirm-delete/{{entry.id}}"><img
                             src="{% static '/images/delete.svg' %}" alt="Delete" width=15px height=15px color:
-                            red;></button>
+                            red;></a>
 
                 </div>
 
@@ -84,7 +84,7 @@
 
             <hr>
 
-            <script>
+           <!--  <script>
                 function del() {
                     $('#{{entry.id}}').addClass('is-active');
                 }
@@ -92,10 +92,10 @@
                 function del_close() {
                     $('#{{entry.id}}').removeClass('is-active');
                 }
-            </script>
+            </script> -->
 
             <!-- delete modal-->
-            <div id="{{entry.id}}" class="modal">
+            <!-- <div id="{{entry.id}}" class="modal">
                 <div class="modal-background" onclick="del_close()"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
@@ -109,7 +109,7 @@
                         <button class="button is-success is-outlined" onclick="del_close()">No</button>
                     </footer>
                 </div>
-            </div>
+            </div> -->
 
 
 
