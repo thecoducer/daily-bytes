@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 
 class EntryForm(ModelForm):
     class Meta: # Meta class is for attach additional information
@@ -39,3 +39,20 @@ class ProfileUpdateForm(ModelForm):
 class ContactForm(forms.Form):
     sender = forms.EmailField()
     message = forms.CharField()
+
+
+class PasswordChangeCustomForm(PasswordChangeForm):
+        error_css_class = 'subtitle'
+        error_messages = {'password_incorrect':
+                  "message here"}
+
+        old_password = CharField(required=False, label='old_password',
+                      widget=PasswordInput(attrs={
+                        'class': 'form-control'}),)
+
+        new_password1 = CharField(required=False, label='new_password1',
+                      widget=PasswordInput(attrs={
+                        'class': 'form-control'}),)
+        new_password2 = CharField(required=False, label='new_password2',
+                      widget=PasswordInput(attrs={
+                        'class': 'form-control'}),)

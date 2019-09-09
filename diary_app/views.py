@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm, NewUserForm
-from django.contrib.auth.forms import PasswordChangeForm
+from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm, NewUserForm, PasswordChangeCustomForm
+#from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -13,7 +13,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-from django.utils.translation import ugettext as _
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -218,7 +217,7 @@ def Profile(request):
                 if request.method == 'POST':
                         uform = UserUpdateForm(request.POST, instance=current_user)
                         puform = ProfileUpdateForm(request.POST, instance=get_bio)
-                        pcform = PasswordChangeForm(request.user, request.POST)
+                        pcform = PasswordChangeCustomForm(request.user, request.POST)
 
                         if uform.is_valid() and puform.is_valid() and pcform.is_valid():
                                 puform.save()
@@ -229,6 +228,6 @@ def Profile(request):
                 else:
                         uform = UserUpdateForm()
                         puform = ProfileUpdateForm()
-                        pcform = PasswordChangeForm(request.user)
+                        pcform = PasswordChangeCustomForm(request.user)
 
                 return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'current_user': current_user, 'get_bio': get_bio})
