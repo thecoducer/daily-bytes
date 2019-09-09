@@ -173,7 +173,7 @@ def SocialSignUp(request):
                 new_user = User.objects.get(username=request.user.username)
 
                 if request.method == 'POST':
-                        form = NewUserForm(request.POST)
+                        form = NewUserForm(request.POST, instance=new_user)
                         if form.is_valid():
                                 form.save()
                                 return redirect('home')
