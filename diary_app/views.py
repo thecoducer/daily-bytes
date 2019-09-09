@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm
+from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm, NewUserForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -173,12 +173,12 @@ def SocialSignUp(request):
                 new_user = User.objects.get(username=request.user.username)
 
                 if request.method == 'POST':
-                        form = UserUpdateForm(request.POST)
+                        form = NewUserForm(request.POST)
                         if form.is_valid():
                                 form.save()
                                 return redirect('home')
                 else:
-                        form = UserUpdateForm()
+                        form = NewUserForm()
                 return render(request, 'users/social-signup.html', {'form': form, 'new_user': new_user})
         else:
                 return redirect('home')
