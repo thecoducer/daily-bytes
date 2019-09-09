@@ -186,7 +186,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_by_email',
 )
 
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/social-signup/?next=/'
+#SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/social-signup/?next=/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
