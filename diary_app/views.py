@@ -204,6 +204,7 @@ def Trash(request):
 def Profile(request):
 
         current_user = request.user
+        new_user = User.objects.get(username=request.user.username)
         
         try:
                 get_bio = UserData.objects.get(user=current_user)
@@ -217,17 +218,19 @@ def Profile(request):
                 uform = UserUpdateForm(request.POST, instance=current_user)
                 puform = ProfileUpdateForm(request.POST, instance=get_bio)
                 pcform = PasswordChangeForm(request.user, request.POST)
+                nuform = NewUserForm(request.POST, instance=new_user)
 
                 if uform.is_valid() and puform.is_valid() and pcform.is_valid():
                         puform.save()
                         uform.save()
                         pwd = pcform.save()
                         update_session_auth_hash(request, pwd)
-                        messages.success(request, _('Your password was successfully updated!'))
+                        nuform.save()
                         return redirect('home')
         else:
                 uform = UserUpdateForm()
                 puform = ProfileUpdateForm()
                 pcform = PasswordChangeForm(request.user)
+                nuform = NewUserForm()
 
-        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'current_user': current_user, 'get_bio': get_bio})
+        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'nuform': nuform, 'current_user': current_user, 'get_bio': get_bio})
