@@ -217,17 +217,30 @@ def Profile(request):
                 if request.method == 'POST':
                         uform = UserUpdateForm(request.POST, instance=current_user)
                         puform = ProfileUpdateForm(request.POST, instance=get_bio)
-                        pcform = PasswordChangeForm(request.user, request.POST)
 
-                        if uform.is_valid() and puform.is_valid() and pcform.is_valid():
+                        if uform.is_valid() and puform.is_valid():
                                 puform.save()
                                 uform.save()
-                                pwd = pcform.save()
-                                update_session_auth_hash(request, pwd)
                                 return redirect('home')
                 else:
                         uform = UserUpdateForm()
                         puform = ProfileUpdateForm()
-                        pcform = PasswordChangeForm(request.user)
 
-                return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'current_user': current_user, 'get_bio': get_bio})
+                return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'current_user': current_user, 'get_bio': get_bio})
+
+
+@login_required
+def ChangePassword(request):
+        if request.method == 'POST':
+                pcform = PasswordChangeForm(request.user, request.POST)
+
+                if pcform.is_valid():
+                        pwd = pcform.save()
+                        update_session_auth_hash(request, pwd)
+                        return redirect(request.GET.get('next'))
+                else:
+                        return redirect(request.GET.get('next'))
+        else:
+                pcform = PasswordChangeForm(request.user)
+
+        return render(request, "users/changepassword.html", {'pcform': pcform})

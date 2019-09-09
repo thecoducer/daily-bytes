@@ -36,33 +36,12 @@
                     
             <div class="field">
                 <div class="control">
-                    {{nuform}}
+                    
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Username</h6>
                     <input type="text" name="username" maxlength=50 class="input is-medium edit-title" value="{{current_user.username}}" required id="id_username">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Email</h6>
                     <input type="email" name="email" class="input is-medium edit-title" value="{{current_user.email}}" id="id_email" disabled>
-
-                    {% if request.user.has_usable_password is True %}
-                    <h6 class="subtitle is-6" style="margin-bottom: 10px;">Current password</h6>
-                    <input type="password" name="old_password" class="input is-medium edit-title" id="id_password1">
-
-                    <h6 class="subtitle is-6" style="margin-bottom: 10px;">New password</h6>
-                    <input type="password" name="new_password1" class="input is-medium edit-title" id="id_password1">
-
-                    <h6 class="subtitle is-6" style="margin-bottom: 10px;">Confirm password</h6>
-                    <input type="password" name="new_password2" class="input is-medium edit-title"  id="id_password2">
-                    {% endif %}
-
-                    <!-- {% if request.user.has_usable_password is False %}
-                    <h6 class="subtitle is-6" style="margin-bottom: 10px;">Set a password</h6>
-                    <input type="password" name="password1" class="input is-medium edit-title" id="id_password1">
-
-                    <h6 class="subtitle is-6" style="margin-bottom: 10px;">Confirm password</h6>
-                    <input type="password" name="password2" class="input is-medium edit-title"  id="id_password2">
-                    {% endif %} -->
-
-                    {{form.error}}
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">First name</h6>
                     <input type="text" name="first_name" maxlength="50" class="input is-medium edit-title" value="{{current_user.first_name}}" required id="id_title">
@@ -77,6 +56,7 @@
             </div>
 
         <div class="buttons is-right">
+            <a class="button is-info is-outlined" href="/change-password/?next=/profile/">Change password</a>
 
             <button class="button is-success is-outlined" type="submit"><img src="{% static '/images/save.svg' %}" alt="Save" width=15px height=15px style="margin-right: 10px;">Save profile</button>
             
