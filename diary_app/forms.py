@@ -21,11 +21,15 @@ class UserForm(UserCreationForm):
         model = User 
         fields = ('email', 'username', 'password1', 'password2', )
 
-    
-class ProfileUserForm(ModelForm):
+class UserUpdateForm(ModelForm):
+    class Meta:
+        model = User 
+        fields = ('username', 'first_name', 'last_name',)
+
+class ProfileUpdateForm(ModelForm):
     class Meta:
         model = UserData
-        fields = ('user', 'bio', )
+        fields = ('bio',)
 
 class ContactForm(forms.Form):
     sender = forms.EmailField()

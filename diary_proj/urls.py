@@ -34,11 +34,13 @@ urlpatterns = [
     path('add/', views.add, name = 'add'),
     path('delete/<int:id>', views.delete),
     path('edit/<int:id>', views.edit),
-    path('about/', views.about),
+    path('about/', views.about, name='about'),
     path('entry/<int:id>', views.readmore, name = 'readmore'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('contact/', views.contact),
-    path('signin/', LoginView.as_view(template_name='diary_app/signin.html'), name='signin'),
+    
+    path('signin/', LoginView.as_view(template_name='diary_app/signin.html', redirect_authenticated_user=True), name='signin'),
+
     path('signup/', views.SignUp, name='signup'),
     #path('signin-validate/', views.SignIn_validate),
     path('signout/', views.SignOut, name='signout'),

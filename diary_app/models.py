@@ -19,8 +19,8 @@ class Entry(models.Model):
     # objects corresponds to each row
     # id is the primary key in our table
     # it is an auto-incremented value
-    """ def __str__(self):
-        return 'Entry #{}'.format(self.id) """
+    def __str__(self):
+        return '{}'.format(self.title)
 
     class Meta:
         verbose_name_plural = 'entries'
@@ -29,3 +29,6 @@ class Entry(models.Model):
 class UserData(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
+
+    def __str__(self):
+        return '{}'.format(self.user)

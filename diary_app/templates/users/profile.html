@@ -17,10 +17,10 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        {% if get_user.first_name %}
-                            {{ get_user.first_name }}'s profile
-                        {% elif get_user.username %}
-                            {{ get_user.username}}'s profile
+                        {% if current_user.first_name %}
+                            {{ current_user.first_name }}'s profile
+                        {% elif current_user.username %}
+                            {{ current_user.username}}'s profile
                         {% endif %}
                     </h1>
                 </div>
@@ -30,17 +30,18 @@
     <section class="section">
     <div class="container">
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
+            <!-- enctype attribute is mandatory to make sure our form takes images -->
         {% csrf_token %}
                     
             <div class="field">
                 <div class="control">
-
+                    
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Username</h6>
-                    <input type="text" name="username" maxlength=50 class="input is-medium edit-title" value="{{get_user.username}}" required id="id_username">
+                    <input type="text" name="username" maxlength=50 class="input is-medium edit-title" value="{{current_user.username}}" required id="id_username">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Email</h6>
-                    <input type="email" name="email" class="input is-medium edit-title" value="{{get_user.email}}" id="id_email" disabled>
+                    <input type="email" name="email" class="input is-medium edit-title" value="{{current_user.email}}" id="id_email" disabled>
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">New password</h6>
                     <input type="password" name="password1" class="input is-medium edit-title" id="id_password1">
@@ -49,13 +50,13 @@
                     <input type="password" name="password2" class="input is-medium edit-title"  id="id_password2">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">First name</h6>
-                    <input type="text" name="first_name" maxlength="50" class="input is-medium edit-title" value="{{get_user.first_name}}" required id="id_title">
+                    <input type="text" name="first_name" maxlength="50" class="input is-medium edit-title" value="{{current_user.first_name}}" required id="id_title">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Last name</h6>
-                    <input type="text" name="last_name" maxlength="50" class="input is-medium edit-title" value="{{get_user.last_name}}" required id="id_title">
+                    <input type="text" name="last_name" maxlength="50" class="input is-medium edit-title" value="{{current_user.last_name}}" required id="id_title">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Bio</h6>
-                    <textarea name="bio" id="id_bio"  class="textarea">{{get_bio.bio}}</textarea>
+                    <textarea type="text" name="bio" id="id_bio" class="textarea">{{get_bio.bio}}</textarea>
 
                 </div>
             </div>

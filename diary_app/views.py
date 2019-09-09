@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from diary_app.forms import EntryForm, UserForm, ProfileUserForm, ContactForm
+from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -49,9 +49,6 @@ class EntryListView(ListView):
                 context = super(EntryListView, self).get_context_data(**kwargs)
                 entries = Entry.objects.filter(author=self.request.user, trash=False)
                 context['count_entries'] = entries.count()
-                
-                # Add any other variables to the context here
-                ...
                 return context
 
         def get_queryset(self):
@@ -198,24 +195,23 @@ def Trash(request):
 
 @login_required
 def Profile(request):
-        get_user = get_object_or_404(User, username = request.user.username)
+        current_user = request.user
+        
         try:
-                get_bio = UserData.objects.get(user=request.user)
+                get_bio = UserData.objects.get(user=current_user)
         except:
                 get_bio = ""
 
         if request.method == 'POST':
-                uform = UserForm(request.POST)
-                puform = ProfileUserForm(request.POST)
-                print("Hello world")
+                uform = UserUpdateForm(request.POST, instance=current_user)
+                puform = ProfileUpdateForm(request.POST, instance=get_bio)
+               
                 if uform.is_valid() and puform.is_valid():
-                        profile = puform.save(commit=False)
-                        profile.user = request.user
                         puform.save()
                         uform.save()
                         return redirect('home')
         else:
-                uform = UserForm()
-                puform = ProfileUserForm()
+                uform = UserUpdateForm()
+                puform = ProfileUpdateForm()
 
-        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'get_user': get_user, 'get_bio': get_bio})
+        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'current_user': current_user, 'get_bio': get_bio})
