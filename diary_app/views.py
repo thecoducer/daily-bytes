@@ -171,7 +171,7 @@ def SignUp(request):
 
 
 @login_required
-def SocialSignUp(request):
+def SocialSignUp(self, request):
         if request.user.has_usable_password() == False:
                 new_user = User.objects.get(username=request.user.username)
 
