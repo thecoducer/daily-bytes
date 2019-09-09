@@ -39,13 +39,3 @@ class ProfileUpdateForm(ModelForm):
 class ContactForm(forms.Form):
     sender = forms.EmailField()
     message = forms.CharField()
-
-
-class PasswordChangeCustomForm(PasswordChangeForm):
-        error_css_class = 'subtitle'
-        error_messages = {'password_incorrect':
-                  "message here"}
-
-        old_password = forms.CharField(required=False, label='old_password')
-        new_password1 = forms.CharField(required=False, label='new_password1')
-        new_password2 = forms.CharField(required=False, label='new_password2')
