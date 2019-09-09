@@ -220,7 +220,7 @@ def Profile(request):
                 pcform = PasswordChangeForm(request.user, request.POST)
                 nuform = NewUserForm(request.POST, instance=new_user)
 
-                if uform.is_valid() and puform.is_valid() and pcform.is_valid():
+                if uform.is_valid() and puform.is_valid() and pcform.is_valid() and nuform.is_valid():
                         puform.save()
                         uform.save()
                         pwd = pcform.save()
