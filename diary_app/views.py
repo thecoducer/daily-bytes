@@ -202,35 +202,33 @@ def Trash(request):
 
 @login_required
 def Profile(request):
-
-        current_user = request.user
-        new_user = User.objects.get(username=request.user.username)
-        
-        try:
-                get_bio = UserData.objects.get(user=current_user)
-        except:
-                # creating an object of UserData
-                new = UserData(user=request.user, bio=" ")
-                new.save()
-                get_bio = UserData.objects.get(user=current_user)
-
-        if request.method == 'POST':
-                uform = UserUpdateForm(request.POST, instance=current_user)
-                puform = ProfileUpdateForm(request.POST, instance=get_bio)
-                pcform = PasswordChangeForm(request.user, request.POST)
-                nuform = NewUserForm(request.POST, instance=new_user)
-
-                if uform.is_valid() and puform.is_valid() and pcform.is_valid() and nuform.is_valid():
-                        puform.save()
-                        uform.save()
-                        pwd = pcform.save()
-                        update_session_auth_hash(request, pwd)
-                        nuform.save()
-                        return redirect('home')
+        if request.user.has_usable_password() == False:
+                return redirect('/social-signup/?next=/profile/')
         else:
-                uform = UserUpdateForm()
-                puform = ProfileUpdateForm()
-                pcform = PasswordChangeForm(request.user)
-                nuform = NewUserForm()
+                current_user = request.user
+                new_user = User.objects.get(username=request.user.username)
+                
+                try:
+                        get_bio = UserData.objects.get(user=current_user)
+                except:
+                        # creating an object of UserData
+                        new = UserData(user=request.user, bio=" ")
+                        new.save()
+                        get_bio = UserData.objects.get(user=current_user)
+                if request.method == 'POST':
+                        uform = UserUpdateForm(request.POST, instance=current_user)
+                        puform = ProfileUpdateForm(request.POST, instance=get_bio)
+                        pcform = PasswordChangeForm(request.user, request.POST)
 
-        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'nuform': nuform, 'current_user': current_user, 'get_bio': get_bio})
+                        if uform.is_valid() and puform.is_valid() and pcform.is_valid():
+                                puform.save()
+                                uform.save()
+                                pwd = pcform.save()
+                                update_session_auth_hash(request, pwd)
+                                return redirect('home')
+                else:
+                        uform = UserUpdateForm()
+                        puform = ProfileUpdateForm()
+                        pcform = PasswordChangeForm(request.user)
+
+                return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'current_user': current_user, 'get_bio': get_bio})

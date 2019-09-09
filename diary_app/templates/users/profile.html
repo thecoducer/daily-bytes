@@ -54,13 +54,13 @@
                     <input type="password" name="new_password2" class="input is-medium edit-title"  id="id_password2">
                     {% endif %}
 
-                    {% if request.user.has_usable_password is False %}
+                    <!-- {% if request.user.has_usable_password is False %}
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Set a password</h6>
                     <input type="password" name="password1" class="input is-medium edit-title" id="id_password1">
 
                     <h6 class="subtitle is-6" style="margin-bottom: 10px;">Confirm password</h6>
                     <input type="password" name="password2" class="input is-medium edit-title"  id="id_password2">
-                    {% endif %}
+                    {% endif %} -->
 
                     {{form.error}}
 
