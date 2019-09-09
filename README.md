@@ -8,7 +8,7 @@ To learn the Django framework
 * [Django](https://www.djangoproject.com/)
 * [Bulma](https://bulma.io/)
 
-### Plug-ins / Add-ons
+### Plug-ins / Add-ons used
 * [CKEditor](https://ckeditor.com/)
 * [python-decouple](https://pypi.org/project/python-decouple/)
 * [social-auth-app-django](https://github.com/python-social-auth/social-app-django)
