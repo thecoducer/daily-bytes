@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
 from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm, NewUserForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -10,6 +11,9 @@ from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.utils.translation import ugettext as _
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -198,23 +202,32 @@ def Trash(request):
 
 @login_required
 def Profile(request):
+
         current_user = request.user
         
         try:
                 get_bio = UserData.objects.get(user=current_user)
         except:
-                get_bio = ""
+                # creating an object of UserData
+                new = UserData(user=request.user, bio=" ")
+                new.save()
+                get_bio = UserData.objects.get(user=current_user)
 
         if request.method == 'POST':
                 uform = UserUpdateForm(request.POST, instance=current_user)
                 puform = ProfileUpdateForm(request.POST, instance=get_bio)
-               
-                if uform.is_valid() and puform.is_valid():
+                pcform = PasswordChangeForm(request.user, request.POST)
+
+                if uform.is_valid() and puform.is_valid() and pcform.is_valid():
                         puform.save()
                         uform.save()
+                        pwd = pcform.save()
+                        update_session_auth_hash(request, pwd)
+                        messages.success(request, _('Your password was successfully updated!'))
                         return redirect('home')
         else:
                 uform = UserUpdateForm()
                 puform = ProfileUpdateForm()
+                pcform = PasswordChangeForm(request.user)
 
-        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'current_user': current_user, 'get_bio': get_bio})
+        return render(request, "users/profile.html", {'uform': uform, 'puform': puform, 'pcform': pcform, 'current_user': current_user, 'get_bio': get_bio})
