@@ -46,13 +46,6 @@ class PasswordChangeCustomForm(PasswordChangeForm):
         error_messages = {'password_incorrect':
                   "message here"}
 
-        old_password = forms.CharField(required=False, label='old_password',
-                      widget=PasswordInput(attrs={
-                        'class': 'form-control'}),)
-
-        new_password1 = forms.CharField(required=False, label='new_password1',
-                      widget=PasswordInput(attrs={
-                        'class': 'form-control'}),)
-        new_password2 = forms.CharField(required=False, label='new_password2',
-                      widget=PasswordInput(attrs={
-                        'class': 'form-control'}),)
+        old_password = forms.CharField(required=False, label='old_password')
+        new_password1 = forms.CharField(required=False, label='new_password1')
+        new_password2 = forms.CharField(required=False, label='new_password2')
