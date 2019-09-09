@@ -46,13 +46,13 @@ class PasswordChangeCustomForm(PasswordChangeForm):
         error_messages = {'password_incorrect':
                   "message here"}
 
-        old_password = CharField(required=False, label='old_password',
+        old_password = PasswordChangeForm.CharField(required=False, label='old_password',
                       widget=PasswordInput(attrs={
                         'class': 'form-control'}),)
 
-        new_password1 = CharField(required=False, label='new_password1',
+        new_password1 = PasswordChangeForm.CharField(required=False, label='new_password1',
                       widget=PasswordInput(attrs={
                         'class': 'form-control'}),)
-        new_password2 = CharField(required=False, label='new_password2',
+        new_password2 = PasswordChangeForm.CharField(required=False, label='new_password2',
                       widget=PasswordInput(attrs={
                         'class': 'form-control'}),)
