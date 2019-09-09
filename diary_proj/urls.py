@@ -52,6 +52,7 @@ urlpatterns = [
     path('trash/', views.Trash, name='trash'),
     path('profile/', views.Profile, name='profile'),
     path('restore/<int:id>', views.restore),
-    path('confirm-delete/<int:id>', views.confirmdelete)
+    path('confirm-delete/<int:id>', views.confirmdelete),
+    path('social-signup/', views.SocialSignUp, name='social-signup')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

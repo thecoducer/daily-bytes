@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from diary_app.models import Entry, UserData
 from django.contrib.auth.models import User
-from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm
+from diary_app.forms import EntryForm, UserForm, ProfileUpdateForm, ContactForm, UserUpdateForm, UserUpdateForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate, login, logout
@@ -134,7 +134,7 @@ def readmore(request, id):
     entry = get_object_or_404(Entry, id=id, author=request.user)
     return render(request, "diary_app/readmore.html", {'entry': entry})
 
-
+@login_required
 def about(request):
     return render(request, "diary_app/about.html")
 
@@ -154,6 +154,9 @@ def contact(request):
 
 
 def SignUp(request):
+        if request.user.is_authenticated == True:
+                return redirect('home')
+
         if request.method == 'POST':
                 form = UserForm(request.POST)
                 if form.is_valid():
@@ -161,24 +164,24 @@ def SignUp(request):
                         return redirect("/signin/")
         else:
                 form = UserForm()
-        return render(request, "users/signup.html", {'form': form}) # indentation?
+        return render(request, "users/signup.html", {'form': form})
 
 
-""" def SignIn(request):
-        return render(request, "diary_app/signin.html") """
+@login_required
+def SocialSignUp(request):
+        if request.user.has_usable_password() == False:
+                new_user = User.objects.get(username=request.user.username)
 
-
-""" def SignIn_validate(request):
-        next_page = request.GET['next']
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-                login(request, user) #logs in the user
-                return HttpResponseRedirect(next_page)
+                if request.method == 'POST':
+                        form = UserUpdateForm(request.POST)
+                        if form.is_valid():
+                                form.save()
+                                return redirect('home')
+                else:
+                        form = UserUpdateForm()
+                return render(request, 'users/social-signup.html', {'form': form, 'new_user': new_user})
         else:
-                return redirect('signin') """
-
+                return redirect('home')
 
 @login_required
 def SignOut(request):

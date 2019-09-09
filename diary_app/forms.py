@@ -21,6 +21,11 @@ class UserForm(UserCreationForm):
         model = User 
         fields = ('email', 'username', 'password1', 'password2', )
 
+class NewUserForm(UserCreationForm):
+    class Meta:
+        model = User 
+        fields = ('password1', 'password2', )
+
 class UserUpdateForm(ModelForm):
     class Meta:
         model = User 
