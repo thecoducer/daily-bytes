@@ -171,7 +171,7 @@ def SignUp(request):
 
 
 @login_required
-def SocialSignUp(self, request):
+def SocialSignUp(request):
         if request.user.has_usable_password() == False:
                 new_user = User.objects.get(username=request.user.username)
 
@@ -179,7 +179,7 @@ def SocialSignUp(self, request):
                         form = NewUserForm(request.POST, instance=new_user)
                         if form.is_valid():
                                 form.save()
-                                return redirect(self.request.GET.get('next'))
+                                return redirect(request.GET.get('next'))
                 else:
                         form = NewUserForm()
                 return render(request, 'users/social-signup.html', {'form': form, 'new_user': new_user})
