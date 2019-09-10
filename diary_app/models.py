@@ -20,7 +20,7 @@ class Entry(models.Model):
     # id is the primary key in our table
     # it is an auto-incremented value
     def __str__(self):
-        return '{}'.format(self.title)
+        return '{0} - {1}'.format(self.title, self.author)
 
     class Meta:
         verbose_name_plural = 'entries'
