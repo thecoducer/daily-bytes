@@ -19,11 +19,11 @@ To learn the Django framework
 
 ## Screenshots
 ### Sign in 
-![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-24-20.png)
+![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-08%2000-24-20.png)
 ### Home
-![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-24.png)
+![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-08%2000-37-24.png)
 ### Add entry
-![](https://github.com/thecoducer/daily-bytes/blob/master/screenshots/Screenshot%20from%202019-09-08%2000-37-34.png)
+![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-08%2000-37-34.png)
 
 ## Getting Started
 To get a local copy up and running follow the steps below.
@@ -72,5 +72,4 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-Twitter: [@thecoducer](https://twitter.com/thecoducer) \
-Email: [mayukh5741@gmail.com](mailto:mayukh5741@gmail.com)
+Twitter: [@thecoducer](https://twitter.com/thecoducer) or Email: [mayukh5741@gmail.com](mailto:mayukh5741@gmail.com)
