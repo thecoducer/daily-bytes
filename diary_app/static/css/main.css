@@ -14,6 +14,10 @@ body{
   background-color: #f5f5f5;
 }
 
+.tile {
+  border-radius: 0;
+}
+
 .header-image {
   background-image: linear-gradient(
     rgba(0, 0, 0, 0.5),
