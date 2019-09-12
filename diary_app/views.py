@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+from django import template
 # importing generic views
 from django.views.generic import (
     ListView,
@@ -21,6 +22,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+
+register = template.Library()
 
 # Create your views here.
 
@@ -38,7 +41,6 @@ def home(request):
 def GetStarted(request):
         return render(request, "diary_app/getstarted.html")
 
-
 class EntryListView(ListView):
         model = Entry
         template_name = 'diary_app/home.html'
@@ -55,6 +57,8 @@ class EntryListView(ListView):
                 context = super(EntryListView, self).get_context_data(**kwargs)
                 entries = Entry.objects.filter(author=self.request.user, trash=False)
                 context['count_entries'] = entries.count()
+                context['count_range'] = range(0, entries.count())
+                context['row_entries'] = range(0, 3)
                 return context
 
         def get_queryset(self):
