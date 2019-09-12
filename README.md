@@ -65,6 +65,9 @@ ALLOWED_HOSTS = localhost, .herokuapp.com, https://dailybytes.herokuapp.com, htt
 - Create admin account: ```python manage.py createsuperuser```
 - Run the app: ```python manage.py runserver```
 
+### App is live at
+[dailybytes.herokuapp.com](https://dailybytes.herokuapp.com/)
+
 ## Improvements
 Check [this](https://github.com/thecoducer/daily-bytes/issues/1) list
 
