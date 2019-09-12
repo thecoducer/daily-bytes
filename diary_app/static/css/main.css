@@ -74,6 +74,10 @@ p{
     background-color: #dfdfdf;
 }
 
+.notification {
+  background-color: transparent;
+}
+
 #add_textarea{
     font-size: 18px;
 }
