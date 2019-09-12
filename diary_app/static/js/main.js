@@ -8,7 +8,3 @@ function toggleBurger() {
 function goback() {
     history.back();
 }
-
-window.onload = () => {
-    document.querySelector(".hero").classList.add("header-image");
-};
