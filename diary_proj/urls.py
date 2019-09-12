@@ -29,7 +29,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', EntryListView.as_view(), name = 'home'),
+    path('', views.GetStarted, name='get-started'),
+    path('home', EntryListView.as_view(), name = 'home'),
     #path('', views.home, name='home'),
     path('add/', views.add, name = 'add'),
     path('delete/<int:id>', views.delete),

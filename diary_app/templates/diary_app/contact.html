@@ -13,17 +13,23 @@
     {% block content %}
     {% load static %}
 
-    <section class="hero is-info">
+    <section class="hero is-link">
         <div class="hero-body">
         <div class="container">
             <h1 class="title">
-                Hello
+                Hello,
             </h1>
             <h2 class="subtitle">
-              {% if user.first_name %}
-                  {{ user.first_name }}!
-              {% elif user.username %}
-                  {{ user.username}}!
+              {% if user.is_authenticated %}
+                {% if user.first_name %}
+                    {{ user.first_name }}!
+                {% elif user.username %}
+                    {{ user.username}}!
+                {% endif %}
+              {% endif %}
+
+              {% if not user.is_authenticated %}
+                human!
               {% endif %}
             </h2>
         </div>

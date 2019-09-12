@@ -35,6 +35,9 @@ def home(request):
     context = {'entries': entries, 'count_entries': count_entries}
     return render(request, 'diary_app/home.html', context) """
 
+def GetStarted(request):
+        return render(request, "diary_app/getstarted.html")
+
 
 class EntryListView(ListView):
         model = Entry
@@ -137,14 +140,12 @@ def readmore(request, id):
     entry = get_object_or_404(Entry, id=id, author=request.user)
     return render(request, "diary_app/readmore.html", {'entry': entry})
 
-@login_required
 def about(request):
     return render(request, "diary_app/about.html")
 
 
-@login_required
 def contact(request):
-        user = get_object_or_404(User, username = request.user.username)
+        #user = get_object_or_404(User, username = request.user.username)
         if request.method == 'POST':
                 form = ContactForm(request.POST)
                 message = request.POST.get('message')
@@ -153,7 +154,7 @@ def contact(request):
                 send_mail('Daily Bytes contact form', message, sender, [settings.EMAIL_HOST_USER], fail_silently=False)
         else:
                 form = ContactForm()
-        return render(request, "diary_app/contact.html", {'user': user, 'form': form})
+        return render(request, "diary_app/contact.html", {'form': form})
 
 
 def SignUp(request):
@@ -189,7 +190,7 @@ def SocialSignUp(request):
 @login_required
 def SignOut(request):
         logout(request)
-        return redirect('signin')
+        return redirect('get-started')
 
 
 @login_required

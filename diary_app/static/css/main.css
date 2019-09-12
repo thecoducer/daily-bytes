@@ -10,6 +10,32 @@ body{
   font-family: 'Lato', sans-serif;
 }
 
+.header-image {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url("https://source.unsplash.com/featured/?nature,mountain,wildlife,old-architecture,taj-mahal");
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+}
+
+.get-started-title {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-size: 50px;
+}
+
+.get-started-subtitle {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
 .logo{
     font-family: 'Abril Fatface', cursive;
     font-size: 1.5em;
@@ -50,7 +76,7 @@ p{
 .footer {
     flex-shrink: 0;
     padding: 20px;
-    background-color: #e4e4e4;
+    background-color: #dfdfdf;
 }
 
 .section{

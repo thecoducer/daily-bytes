@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Get Started - Daily Bytes</title>
+</head>
+
+<body>
+    {% extends "./base.html" %}
+    {% block content %}
+    {% load static %}
+
+    <section class="hero header-image is-link is-fullheight" style="background-color: #f5f5f5;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="get-started-title">
+                    Write your hearts out
+                </h1>
+                <h2 class="get-started-subtitle">
+                    byte by byte.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="column has-text-centered" style="margin-bottom: 30px;">
+                <a class="button is-success has-text-centered is-medium" href="/signin/">Get started</a>
+            </div>
+
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <p class="title">Hello World</p>
+                        <p class="subtitle">What is up?</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <p class="title">Foo</p>
+                        <p class="subtitle">Bar</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box">
+                        <p class="title">Third column</p>
+                        <p class="subtitle">With some content</p>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
+                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
+                                feugiat facilisis.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    {% endblock %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147095017-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-147095017-1');
+    </script>
+
+</body>
+
+</html>
