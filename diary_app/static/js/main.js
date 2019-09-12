@@ -9,6 +9,6 @@ function goback() {
     history.back();
 }
 
-window.onload = () => {
+/* window.onload = () => {
     document.querySelector(".hero").classList.add("header-image");
-};
+}; */
