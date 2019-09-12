@@ -29,37 +29,43 @@
     <section class="section">
         <div class="container">
 
-            <div class="column has-text-centered" style="margin-bottom: 30px;">
+            <div class="column has-text-centered" style="margin-bottom: 70px;">
                 {% if not user.is_authenticated %}
                 <a class="button is-success has-text-centered is-medium" href="/signin/">Get started</a>
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                <a class="button is-success has-text-centered is-medium" href="{% url 'home' %}">Your entries</a>
+                <a class="button is-success has-text-centered is-medium" href="{% url 'home' %}">Read your entries</a>
                 {% endif %}
             </div>
 
             <div class="tile is-ancestor">
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <p class="title">Hello World</p>
-                        <p class="subtitle">What is up?</p>
+                    <article class="tile is-child box has-text-centered">
+                        <p class="title"><img src="{% static '/images/pen.svg' %}" alt="Add new byte" width=30px
+                                height=30px></p>
+                        <div class="content" style="font-size: 20px;">
+                            <p>Apply various styles and colors to your text with the advanced text editor
+                            </p>
+                        </div>
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
+                    <article class="tile is-child box has-text-centered">
                         <p class="title">Foo</p>
-                        <p class="subtitle">Bar</p>
+                        <div class="content" style="font-size: 20px;">
+                            <p>Apply various styles and colors to your text with the advanced text editor
+                            </p>
+                        </div>
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child box">
+                    <article class="tile is-child box has-text-centered">
                         <p class="title">Third column</p>
-                        <p class="subtitle">With some content</p>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu
-                                pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-                                feugiat facilisis.</p>
+
+                        <div class="content" style="font-size: 20px;">
+                            <p>Apply various styles and colors to your text with the advanced text editor
+                            </p>
                         </div>
                     </article>
                 </div>
