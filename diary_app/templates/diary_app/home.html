@@ -71,9 +71,9 @@
                                 </a>
                             </header>
                             <a class="a-home" href="/entry/{{entry.id}}">
-                                <div class="card-content">
+                                <div class="card-content" style="margin-top: -25px; margin-bottom: -10px;">
                                     <div class="content">
-                                        {{ entry.text | truncatechars:200 | safe}}
+                                        <p>{{ entry.text | truncatechars:200 | safe}}</p>
                                     </div>
                                 </div>
                             </a>
