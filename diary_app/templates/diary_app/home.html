@@ -73,7 +73,7 @@
                             <a class="a-home" href="/entry/{{entry.id}}">
                                 <div class="card-content" style="margin-top: -25px; margin-bottom: -10px;">
                                     <div class="content">
-                                        <p>{{ entry.text | truncatechars:200 | safe}}</p>
+                                        <p>{{ entry.text | truncatewords:12 | safe}}</p>
                                     </div>
                                 </div>
                             </a>
