@@ -9,9 +9,10 @@ To learn the Django framework
 * [Bulma](https://bulma.io/)
 
 ### Plug-ins / Add-ons used
-* [CKEditor](https://ckeditor.com/)
-* [python-decouple](https://pypi.org/project/python-decouple/)
-* [social-auth-app-django](https://github.com/python-social-auth/social-app-django)
+* [CKEditor](https://ckeditor.com/): Advanced text editor
+* [jsDeliver](https://www.jsdelivr.com/): Open-source CDN that uses CKEditor folder of this repo as a CDN to host CKEditor.
+* [python-decouple](https://pypi.org/project/python-decouple/): Pyhton library that seperates sensitive information and credentials from your code.
+* [social-auth-app-django](https://github.com/python-social-auth/social-app-django): Provides interface for social login
 * [Font Awesome](https://fontawesome.com)
 
 ### Hosted on
