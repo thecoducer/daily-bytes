@@ -129,6 +129,14 @@ background: #eaeaea no-repeat 20px 25px;
         border-color: #ffffff;
         color: #ffffff;
       }
+
+      .textarea {
+        min-width: 0%;
+      
+      }
+      .input, .textarea {
+        width: 50%;
+      }
     
   }
   
@@ -158,7 +166,14 @@ background: #eaeaea no-repeat 20px 25px;
         border-color: #ffffff;
         color: #ffffff;
       }
-    
+
+      .textarea {
+        min-width: 0%;
+      
+      }
+      .input, .textarea {
+        width: 50%;
+      }    
   }
 
 /* 
