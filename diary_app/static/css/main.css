@@ -151,7 +151,7 @@ background: #eaeaea no-repeat 20px 25px;
         margin-bottom: 0px;
         border-radius: 0px;
         width: 50%;
-        background-color: rgb(75, 156, 238);
+        background-color: transparent;
         border-color: #ffffff;
         color: #ffffff;
       }
@@ -188,7 +188,7 @@ background: #eaeaea no-repeat 20px 25px;
         margin-bottom: 0px;
         border-radius: 0px;
         width: 50%;
-        background-color: rgb(75, 156, 238);
+        background-color: transparent;
         border-color: #ffffff;
         color: #ffffff;
       }
@@ -269,7 +269,7 @@ background: #eaeaea no-repeat 20px 25px;
   .title-input {
     margin-bottom: 0px;
     border-radius: 0px;
-    background-color: rgb(75, 156, 238);
+    background-color: transparent;
     border-color: #ffffff;
     color: #ffffff;
   }
