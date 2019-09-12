@@ -11,4 +11,5 @@ function goback() {
 
 window.onload = () => {
     document.querySelector(".hero").classList.add("header-image");
+    document.querySelector(".hero").classList.add("is-link");
 };
