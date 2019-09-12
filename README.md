@@ -28,6 +28,9 @@ To learn the Django framework
 ### Add entry
 ![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-12%2018-54-07.png)
 
+## App is live at
+[dailybytes.herokuapp.com](https://dailybytes.herokuapp.com/)
+
 ## Getting Started
 To get a local copy up and running follow the steps below.
 
@@ -64,9 +67,6 @@ ALLOWED_HOSTS = localhost, .herokuapp.com, https://dailybytes.herokuapp.com, htt
 - Create the database: ```python manage.py migrate```
 - Create admin account: ```python manage.py createsuperuser```
 - Run the app: ```python manage.py runserver```
-
-### App is live at
-[dailybytes.herokuapp.com](https://dailybytes.herokuapp.com/)
 
 ## Improvements
 Check [this](https://github.com/thecoducer/daily-bytes/issues/1) list
