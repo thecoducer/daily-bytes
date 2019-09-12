@@ -22,7 +22,7 @@ To learn the Django framework
 ### Landing page
 ![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-12%2014-55-19.png)
 ### Sign in 
-![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-08%2000-24-20.png)
+![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-12%2018-59-23.png)
 ### Home
 ![](https://raw.githubusercontent.com/thecoducer/daily-bytes/master/screenshots/Screenshot%20from%202019-09-12%2018-57-05.png)
 ### Add entry
