@@ -11,7 +11,8 @@ body{
 }
 
 .a-home{
-  color: black;
+  color: #363636;
+  word-break: break-all;
 }
 
 .hero {
