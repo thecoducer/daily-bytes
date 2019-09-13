@@ -46,7 +46,7 @@ class EntryListView(ListView):
         template_name = 'diary_app/home.html'
         context_object_name = 'entries'
         ordering = ['-date_posted']
-        paginate_by = 10
+        paginate_by = 15
 
         @method_decorator(login_required)
         def dispatch(self, *args, **kwargs):
