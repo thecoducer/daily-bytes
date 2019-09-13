@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trash -  Daily Bytes</title>
-    
+    <title>Trash - Daily Bytes</title>
+
     <!-- <script>
             function del(){
                 document.getElementById("del_mod").classList.add("is-active");
@@ -17,6 +17,19 @@
             }
     </script> -->
 
+    <style>
+        /* a.delete-a:link  {
+            background-color: yellow;
+        } */
+        a.delete-a:hover {
+            background-color: rgb(255, 94, 94);
+        }
+
+        a.restore-a:hover {
+            background-color: #81ff99;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -26,51 +39,69 @@
 
     <section class="hero header-image is-primary">
         <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                Trash
-            </h1>
-        </div>
+            <div class="container">
+                <h1 class="title">
+                    Trash
+                </h1>
+            </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            
-        {% if entries %}    
-        {% for entry in entries %}
 
-            <article class="media">
+            {% if entries %}
+            <div class="columns is-multiline" style="margin-top: 30px;">
+                {% for entry in entries %}
 
-            <div class="media-content">
-                <a href="/entry/{{entry.id}}">
-                <div class="content notification readmore-div">
-                    <p>
-                        <strong class="entry-title">{{ entry.title }}</strong> | <i>{{ entry.date_posted }}</i>
+                <div class="column is-one-third">
+
+                    <div class="card">
+                        <a class="a-home" href="/entry/{{entry.id}}">
+                            <div class="card-content readmore-div">
+                                <p class="title" style="font-size: 25px;">
+                                    {{entry.title}}
+                                </p>
+                                <p class="subtitle" style="font-size: 18px;">
+                                    {{entry.date_posted}}
+                                </p>
+                            </div>
+                        </a>
+                        <footer class="card-footer">
+                            <a href="/restore/{{entry.id}}" class="card-footer-item restore-a">
+                                <p class="card-footer-item">
+                                    <span>
+                                        <img src="{% static '/images/restore.svg' %}" alt="Restore" width=15px
+                                            height=15px>
+                                    </span>
+                                </p>
+                            </a>
+                            <a href="/delete/{{entry.id}}" class="card-footer-item delete-a">
+                                <p class="card-footer-item">
+                                    <span>
+                                        <img src="{% static '/images/trash.svg' %}" alt="Trash" width=15px height=15px
+                                            color: red;>
+                                    </span>
+                                </p>
+                            </a>
+                        </footer>
+                    </div>
+
+                </div>
+
+
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="columns notification">
+                <div class="column">
+                    <p class="subtitle is-5 has-text-centered">
+                        Your trash is empty
                     </p>
                 </div>
-                </a>
+                {% endif %}
+
             </div>
-
-            <div class="media-right">
-                    <a class="button is-success is-outlined" name="restore" value="restore" title="Restore from trash" href="/restore/{{entry.id}}"><img src="{% static '/images/restore.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
-
-                    <a class="button is-danger is-outlined" name="delete-forever" value="delete-forever" title="Delete forever" href="/delete/{{entry.id}}"><img src="{% static '/images/trash.svg' %}" alt="Delete" width=15px height=15px color: red;></a>
-            </div>
-
-            </article>
-
-        {% endfor %}
-        {% else %}
-        <div class="columns notification">
-            <div class="column">
-                <p class="subtitle is-5 has-text-centered">
-                    Your trash is empty
-                </p>
-            </div>
-        {% endif %}
-
-        </div>
 
     </section>
     {% endblock %}
@@ -78,12 +109,13 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147095017-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-147095017-1');
+        gtag('config', 'UA-147095017-1');
     </script>
 
 </body>
+
 </html>
