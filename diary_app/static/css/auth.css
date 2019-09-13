@@ -1,6 +1,15 @@
 body {
     color: #434343;
-    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+    /* background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%); */
+    background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url("https://source.unsplash.com/featured/?nature,mountain,wildlife,old-architecture,taj-mahal") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     font-family: 'Lato', sans-serif;
 }
 h2{
