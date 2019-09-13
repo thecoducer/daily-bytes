@@ -6,30 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% extends "./base.html" %}
-    {% block title %} {{ entry.title }} {% endblock %}
-
-    <style>
-        p {
-            font-size: 18px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-size: 27px;
-            font-weight: 400;
-        }
-    </style>
+    {% block title %} {{ entry.title }}
+    {% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/readmore.css' %}">
 </head>
 
 <body>
 
     {% block content %}
-    {% load static %}
-
     <form method="GET"></form>
 
     <section class="hero is-primary is-bold">
@@ -83,7 +68,6 @@
     </section>
 
     {% endblock %}
-
 </body>
 
 </html>
