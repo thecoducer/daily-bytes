@@ -51,8 +51,16 @@ INSTALLED_APPS = [
     'diary_app',
     'ckeditor',
     'ckeditor_uploader',
-    'social_django'
+    'social_django',
+    'search',
+    'django_elasticsearch_dsl',
 ]
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 

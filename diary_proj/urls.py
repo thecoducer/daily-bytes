@@ -26,6 +26,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import views as auth_views
 
+from search import views as search_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -55,6 +57,7 @@ urlpatterns = [
     path('restore/<int:id>', views.restore),
     path('confirm-delete/<int:id>', views.confirmdelete),
     path('social-signup/', views.SocialSignUp, name='social-signup'),
-    path('change-password/', views.ChangePassword)
+    path('change-password/', views.ChangePassword),
+    path('search/', search_views.search, name='search')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
