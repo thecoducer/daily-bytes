@@ -200,6 +200,7 @@ def SignOut(request):
 @login_required
 def Trash(request):
         entries = Entry.objects.filter(author=request.user, trash=True)
+        entries = entries.order_by('-date_posted')
         context = {'entries': entries}
         return render(request, 'diary_app/trash.html', context)
 
