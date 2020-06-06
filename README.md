@@ -32,7 +32,7 @@ To learn the Django framework
 [dailybytes.herokuapp.com](https://dailybytes.herokuapp.com/)
 
 ## Getting Started
-To get a local copy up and running follow the steps below.
+Download and run the project
 
 ### Installation
 1. Clone the repo ```git clone https://github.com/thecoducer/daily-bytes.git```
